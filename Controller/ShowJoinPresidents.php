@@ -3,6 +3,7 @@ include_once '../Model/PresidentModel.php';
 
 class ShowJoinPresidents
 {
+	public $templateData;
 	
 	public function __construct( )
 	{
@@ -14,21 +15,19 @@ class ShowJoinPresidents
 	
 	public function showPresidentsJoin( )
 	{
-		$showByJoinPresident = new PresidentModel();
-		//$showByJoinPresident->renderForm();//fire the form!
-		
-		$this->testF();
+		$showByJoinPresident	= new PresidentModel();
 
-		$showByJoinPresident->showPresidentsJoin();
+		$presidents				= $showByJoinPresident->showPresidentsJoin();
+		$this->templateData	= $presidents;
+		
+		$this->render();
 	}
 
-
-	public function testF( )
+	public function render( )
 	{
-		$form = file_get_contents( __DIR__ . '/../View/ShowPresidents.php');
+		$template = include __DIR__ . '/../View/ShowPresidents.php';
 		
-		print ( $form );
-		echo 'That is a small test'. '<br></ br>';
+		print $template;
 	}
 		
 }
