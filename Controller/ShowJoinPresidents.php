@@ -9,7 +9,7 @@ class ShowJoinPresidents
 	{
 		
 	}
-
+	
 	public function showPresidentsJoin( )
 	{
 		$showByJoinPresident	= new PresidentModel();

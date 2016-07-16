@@ -83,7 +83,7 @@ class PresidentModel
 	}
 
 	
-	public function showAllPresidents()
+	public function showAllPresidentsArray()
 	{
 		$sql = 'SELECT tbl_role.rol_name, peo_forename, peo_surname, 
 				tbl_date.dat_start, tbl_date.dat_end FROM tbl_people JOIN tbl_role ON peo_rol_id = rol_id AND rol_name="President"
@@ -110,7 +110,6 @@ class PresidentModel
 	
 	public function showAllVicePresidents()
 	{ 
-		
 		try
 		{
 			$sql = 'SELECT tbl_role.rol_name, peo_forename, peo_surname, 
@@ -126,50 +125,39 @@ class PresidentModel
 			
 			return $allVicePresidentsArray;
 			
-			
 		}
 		catch ( Exception $e )
 		{
 			return "Failed to show list of all Vice-Presidents";
 			echo $e;
 		}
-		
-		
-		
+			
 	}
 	
-	public function sqlQueries()//not working!!!
+	public function showAllPresidents()
 	{
-		try
+		try 
 		{
-			$sql = 'SELECT * FROM tbl_people, tbl_role WHERE peo_rol_id AND rol_name="President" 
-					ORDER by peo_forename, peo_surname ASC';
+			$sql = 'SELECT tbl_role.rol_name, peo_forename, peo_surname,
+				tbl_date.dat_start, tbl_date.dat_end
+				FROM tbl_people JOIN tbl_role ON peo_rol_id = rol_id AND rol_name="President"
+				JOIN tbl_date ON dat_peo_id = peo_id';
 			
-
-			//shows all records!
-			$sql1 = 'SELECT tbl_role.rol_id, tbl_role.rol_name, tbl_people.peo_forename, tbl_people.peo_surname 
-					FROM tbl_role 
-					INNER JOIN tbl_people 
-					on tbl_role.rol_id=tbl_people.peo_rol_id';
-
-			//shows all tables and plenty of other data;
-			$sql2 = 'SELECT tbl_role.rol_name, tbl_people.peo_forename, tbl_people.peo_surname, tbl_date.dat_start, tbl_date.dat_end
-			FROM tbl_role 
-			INNER JOIN tbl_people on tbl_role.rol_id=tbl_people.peo_rol_id
-			inner JOIN tbl_date on tbl_people.peo_id=tbl_date.dat_peo_id
-			ORDER BY tbl_role.rol_name';
+			$stmt = $this->db->prepare( $sql );
 			
-			//shows all presidents!
-			$sql3 = 'SELECT tbl_role.rol_name, peo_forename, peo_surname, tbl_date.dat_start, tbl_date.dat_end FROM tbl_people JOIN tbl_role ON peo_rol_id = rol_id AND rol_name="President"
-					JOIN tbl_date ON dat_peo_id = peo_id';
-		
+			$presidentsList = $stmt->execute();
+			
+			$presidentsArray = $stmt->fetchAll( PDO::FETCH_BOTH );
+			
+			return $presidentsArray;
+			
+			
 		}
-		catch ( Exception $e)
+		catch ( Exception $e )
 		{
-			return "Something went wrong or Crap...";
+			return "Failed to show list of all Presidents";
 			echo $e;
 		}
-		
 	}
 	
 	public function showPresidentsJoin()
@@ -220,6 +208,40 @@ class PresidentModel
 		$form = file_get_contents( __DIR__ . '/../View/CreateUser.html');
 		
 		print ( $form );
+	}
+	
+	public function sqlQueries()//not working!!!
+	{
+		try
+		{
+			$sql = 'SELECT * FROM tbl_people, tbl_role WHERE peo_rol_id AND rol_name="President"
+					ORDER by peo_forename, peo_surname ASC';
+				
+	
+			//shows all records!
+			$sql1 = 'SELECT tbl_role.rol_id, tbl_role.rol_name, tbl_people.peo_forename, tbl_people.peo_surname
+					FROM tbl_role
+					INNER JOIN tbl_people
+					on tbl_role.rol_id=tbl_people.peo_rol_id';
+	
+			//shows all tables and plenty of other data;
+			$sql2 = 'SELECT tbl_role.rol_name, tbl_people.peo_forename, tbl_people.peo_surname, tbl_date.dat_start, tbl_date.dat_end
+			FROM tbl_role
+			INNER JOIN tbl_people on tbl_role.rol_id=tbl_people.peo_rol_id
+			inner JOIN tbl_date on tbl_people.peo_id=tbl_date.dat_peo_id
+			ORDER BY tbl_role.rol_name';
+				
+			//shows all presidents!
+			$sql3 = 'SELECT tbl_role.rol_name, peo_forename, peo_surname, tbl_date.dat_start, tbl_date.dat_end FROM tbl_people JOIN tbl_role ON peo_rol_id = rol_id AND rol_name="President"
+					JOIN tbl_date ON dat_peo_id = peo_id';
+	
+		}
+		catch ( Exception $e)
+		{
+			return "Something went wrong or Crap...";
+			echo $e;
+		}
+	
 	}
 	
 }

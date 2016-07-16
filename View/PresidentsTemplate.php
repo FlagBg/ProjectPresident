@@ -8,7 +8,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=1024; charset=ISO-8859-1">
 		
-		<title>US Vice Presidents list</title>
+		<title>US Presidents list</title>
 	</head>
 
 	<body id="vice-president-list-page">
@@ -34,18 +34,18 @@
 				<table class="table">
 				
 					<tr>
-						<th>Vice Presidents List</th>
+						<th>Presidents List</th>
 					</tr>
 					<?php
 						
-						for( $i = 0; $i < count( $vicePresidents ); $i++ )
+						for( $i = 0; $i < count( $presidents ); $i++ )
 						{
 					?>
 					<tr>
-						<td><?php echo $vicePresidents[$i]['peo_forename'] . " ", 
-										$vicePresidents[$i]['peo_surname'] . ":", 
-										" Mandate Starts " . $vicePresidents[$i]['dat_start'] . " ",
-										"mandate end " . $vicePresidents[$i]['dat_end'] . " "
+						<td><?php echo $presidents[$i]['peo_forename'] . " ", 
+										$presidents[$i]['peo_surname'] . ":", 
+										" Mandate Starts " . $presidents[$i]['dat_start'] . " ",
+										"mandate end " . $presidents[$i]['dat_end'] . " "
 						?>
 						</td>
 						
@@ -110,7 +110,3 @@
 	
 	</body>
 </html>
-	
-	
-	
-	

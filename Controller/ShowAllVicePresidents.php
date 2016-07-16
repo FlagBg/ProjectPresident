@@ -12,27 +12,18 @@ class ShowAllVicePresidents
 	
 	public function showAllVicePresidents()
 	{	
-		$vicePresidents = new PresidentModel();
-		die('hereController');
-		$vicePresidents 				= $presidentModel->showAllVicePresidents();
+		$showAllVicePresidents = new PresidentModel();
 		
-		$this->templateData 			= $vicePresidents;
+		$vicePresidents = $showAllVicePresidents->showAllVicePresidents();
 		
-		
-		if ( $vicePresidents == "Failed" )
-		{
-			print_r( $e );
-			echo "<br></ br>";
-			echo "Something went wrong in ShowAllPresidentsController";
-		}
-		else 
-		{
-			$template = include __DIR__ . '/../View/VicePresidentsTemplate.php';
-			
-			print_r( $template );
-		}
-		
+		$template = include __DIR__ . '/../View/VicePresidentsTemplate.php';
+	}
+	
+	public function render()
+	{
+		print $template;
 	}
 
 }
 ?>
+
