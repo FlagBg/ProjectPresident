@@ -46,7 +46,11 @@ class PresidentCreate
 		{
 			// eventually this should be a view.
 			echo "You have successfully added a person.";
-			//print_r( $presidentData );
+			
+			/*$form = file_get_contents( __DIR__ . '/../View/CreateUser.html');
+			print ( $form );  This way it is called the form and print it, because it is inside*/
+			//other way;
+			$templateForm = include __DIR__ . '/../View/CreateUser.html';
 		}
 		else 
 		{
@@ -55,12 +59,10 @@ class PresidentCreate
 
 	}
 
-	/* public function renderForm()
+	public function render()
 	{
-		$form = file_get_contents( __DIR__ . '../View/CreatePeople.html');
-
-		print ( $form );
-	} */
+		print ( $templateForm );
+	} 
 
 
 }

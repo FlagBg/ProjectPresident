@@ -45,7 +45,7 @@ if ( $controller != '' )
 		
 		$showVicePresidents = new ShowAllVicePresidents;
 		
-		echo $showVicePresidents->showAllPresidents();
+		echo $showVicePresidents->showAllVicePresidents();
 		
 		echo 'controller ShowAllVicePresidents';
 	}
@@ -70,7 +70,6 @@ if ( $controller != '' )
 
 else 
 {
-	
 		$form = file_get_contents( __DIR__ . '/../View/CreateUser.html');
 			
 		print ( $form );

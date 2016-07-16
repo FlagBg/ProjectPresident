@@ -44,13 +44,14 @@
 						<th>President</th>
 						<th>Vice President</th>
 					</tr>
-					<?php 
-						for($i = 0; $i < count($this->templateData); $i++ )
+					<?php
+						
+						for( $i = 0; $i < count($presidents); $i++ )
 						{
 					?>
 					<tr>
-						<td>1.<?php echo $this->templateData[$i]['peo_forename'], $this->templateData[$i]['peo_surname'], $this->templateData[$i]['dat_start'],$this->templateData[$i]['dat_end']?></td>
-						<td><?php echo $this->templateData[$i]['peo_forename'], $this->templateData[$i]['peo_surname'], $this->templateData[$i]['dat_start'],$this->templateData[$i]['dat_end']?></td>
+						<td>1.<?php echo $presidents[$i]['peo_forename'], $presidents[$i]['peo_surname'], $presidents[$i]['dat_start'],$presidents[$i]['dat_end']?></td>
+						<td><?php echo $presidents[$i]['peo_forename'], $presidents[$i]['peo_surname'], $presidents[$i]['dat_start'],$presidents[$i]['dat_end']?></td>
 					</tr>
 					<?php
 						}

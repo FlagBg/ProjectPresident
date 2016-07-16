@@ -2,7 +2,6 @@
 
 include_once '../Model/PresidentModel.php';
 
-
 class ShowAllVicePresidents
 {
 	
@@ -11,13 +10,24 @@ class ShowAllVicePresidents
 		
 	}
 	
-	public function showAllPresidents()
+	public function showAllVicePresidents()
 	{
 		//echo "i am in show vice presidents controller";
 		
 		$presidentModel = new PresidentModel();
 		
-		print_r( $dataArray = $presidentModel->showAllPresidents() );
+		$dataArray = $presidentModel->showAllVicePresidents();
+		
+		if ( $dataArray == "Failed" )
+		{
+			print_r( $e );
+			echo "<br></ br>";
+			echo "Something went wrong in ShowAllPresidentsController";
+		}
+		else 
+		{
+			print_r( $dataArray );
+		}
 		
 	}
 

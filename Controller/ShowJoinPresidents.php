@@ -18,16 +18,13 @@ class ShowJoinPresidents
 		$showByJoinPresident	= new PresidentModel();
 
 		$presidents				= $showByJoinPresident->showPresidentsJoin();
-		//$this->templateData	= $presidents;//ей този пиниз кво прави
-		
+		//$this->templateData	= $presidents;
 		
 		$template = include __DIR__ . '/../View/ShowPresidents.php';
 	}
 
 	public function render( )
 	{
-		
-		
 		print $template;
 	}
 		

@@ -33,13 +33,13 @@ class PresidentModel
 		
 		$sql0 = 'SELECT * FROM tbl_role WHERE rol_name=? LIMIT 1';
 		
-		$roleArray = array($presidentData['person_role']);
+		$roleArray = array( $presidentData['person_role'] );
 		//print_r( $returnedArray );
 		//echo "<br /><br/>";
 		try 
 		{
-			$stmt = $this->db->prepare($sql0);
-			$result = $stmt->execute($roleArray);
+			$stmt = $this->db->prepare( $sql0 );
+			$result = $stmt->execute( $roleArray );
 			
 			// find the rol_id returned by the query. and use it in the sql query to insert into the tbl_people table.
 			
@@ -85,12 +85,12 @@ class PresidentModel
 	
 	public function showAllPresidents()
 	{
-		$sql = 'SELECT * FROM tbl_people, tbl_role, tbl_date 
-				WHERE peo_rol_id=rol_id AND rol_name="President" 
-				AND peo_id=dat_peo_id 
-				ORDER BY dat_start, dat_end, peo_forename, peo_surname ASC';
-	
-		try 
+		$sql = 'SELECT tbl_role.rol_name, peo_forename, peo_surname, 
+				tbl_date.dat_start, tbl_date.dat_end FROM tbl_people JOIN tbl_role ON peo_rol_id = rol_id AND rol_name="President"
+				JOIN tbl_date ON dat_peo_id = peo_id
+				';
+		
+		try
 		{
 			$stmt = $this->db->prepare( $sql );
 			
@@ -113,8 +113,10 @@ class PresidentModel
 		
 		try
 		{
-			$sql = 'SELECT * FROM tbl_people, tbl_role, tbl_date WHERE peo_rol_id AND rol_name="Vice-President"
-				AND peo_id=dat_peo_id ORDER BY dat_start, dat_end, peo_forename, peo_surname ASC';
+			$sql = 'SELECT tbl_role.rol_name, peo_forename, peo_surname, 
+				tbl_date.dat_start, tbl_date.dat_end 
+				FROM tbl_people JOIN tbl_role ON peo_rol_id = rol_id AND rol_name="Vice-President"
+				JOIN tbl_date ON dat_peo_id = peo_id';
 			
 			$stmt = $this->db->prepare( $sql );
 			
@@ -143,16 +145,24 @@ class PresidentModel
 			$sql = 'SELECT * FROM tbl_people, tbl_role WHERE peo_rol_id AND rol_name="President" 
 					ORDER by peo_forename, peo_surname ASC';
 			
+
+			//shows all records!
 			$sql1 = 'SELECT tbl_role.rol_id, tbl_role.rol_name, tbl_people.peo_forename, tbl_people.peo_surname 
 					FROM tbl_role 
 					INNER JOIN tbl_people 
 					on tbl_role.rol_id=tbl_people.peo_rol_id';
-			
+
+			//shows all tables and plenty of other data;
 			$sql2 = 'SELECT tbl_role.rol_name, tbl_people.peo_forename, tbl_people.peo_surname, tbl_date.dat_start, tbl_date.dat_end
-     FROM tbl_role 
-     	INNER JOIN tbl_people on tbl_role.rol_id=tbl_people.peo_rol_id
-        inner JOIN tbl_date on tbl_people.peo_id=tbl_date.dat_peo_id
-     ORDER BY tbl_role.rol_name';
+			FROM tbl_role 
+			INNER JOIN tbl_people on tbl_role.rol_id=tbl_people.peo_rol_id
+			inner JOIN tbl_date on tbl_people.peo_id=tbl_date.dat_peo_id
+			ORDER BY tbl_role.rol_name';
+			
+			//shows all presidents!
+			$sql3 = 'SELECT tbl_role.rol_name, peo_forename, peo_surname, tbl_date.dat_start, tbl_date.dat_end FROM tbl_people JOIN tbl_role ON peo_rol_id = rol_id AND rol_name="President"
+					JOIN tbl_date ON dat_peo_id = peo_id';
+		
 		}
 		catch ( Exception $e)
 		{
@@ -206,7 +216,7 @@ class PresidentModel
 	}
 	
 	public function renderForm()
-	{
+	{die('renderFormInModel');
 		$form = file_get_contents( __DIR__ . '/../View/CreateUser.html');
 		
 		print ( $form );
