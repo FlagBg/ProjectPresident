@@ -11,14 +11,15 @@ class ShowAllVicePresidents
 	}
 	
 	public function showAllVicePresidents()
-	{
-		//echo "i am in show vice presidents controller";
+	{	
+		$vicePresidents = new PresidentModel();
+		die('hereController');
+		$vicePresidents 				= $presidentModel->showAllVicePresidents();
 		
-		$presidentModel = new PresidentModel();
+		$this->templateData 			= $vicePresidents;
 		
-		$dataArray = $presidentModel->showAllVicePresidents();
 		
-		if ( $dataArray == "Failed" )
+		if ( $vicePresidents == "Failed" )
 		{
 			print_r( $e );
 			echo "<br></ br>";
@@ -26,18 +27,12 @@ class ShowAllVicePresidents
 		}
 		else 
 		{
-			print_r( $dataArray );
+			$template = include __DIR__ . '/../View/VicePresidentsTemplate.php';
+			
+			print_r( $template );
 		}
 		
 	}
 
 }
 ?>
-
-<doctype html>
-	<html>
-	<body>
-		
-	
-	</body>
-	</html>
