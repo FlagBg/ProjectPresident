@@ -15,8 +15,6 @@ class ShowPresidents
 		
 		$presidents = $presidentsAll->showAllPresidents();
 		
-		var_dump( $presidents ); die('controlerPresidents');
-		
 		$template = include __DIR__ . '/../View/PresidentsTemplate.php';
 	}
 	
