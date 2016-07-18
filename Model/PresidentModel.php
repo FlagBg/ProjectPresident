@@ -25,17 +25,21 @@ class PresidentModel
 		$this->db = Database::getInstance();
 	}
 
-
+	
+	/**
+	 * @brief	create President and Vice-President 
+	 * 
+	 * @param array $presidentData
+	 */
 	public function createPresident( $presidentData )
 	{
 		//print_r($presidentData);
 		//echo "<br /><br />";
-		
 		$sql0 = 'SELECT * FROM tbl_role WHERE rol_name=? LIMIT 1';
 		
 		$roleArray = array( $presidentData['person_role'] );
-		//print_r( $returnedArray );
-		//echo "<br /><br/>";
+		//print_r( $returnedArray );//echo "<br /><br/>";
+		
 		try 
 		{
 			$stmt = $this->db->prepare( $sql0 );
@@ -61,7 +65,8 @@ class PresidentModel
 			
 			$lastInsertId = $this->db->lastInsertId();
 			
-			$sql1 = 'INSERT INTO `tbl_date`( `dat_start`, `dat_end`, `dat_peo_id`) VALUES ( DATE_FORMAT(?, "%Y-%m-%d"),DATE_FORMAT(?, "%Y-%m-%d"),? )';
+			$sql1 = 'INSERT INTO `tbl_date`( `dat_start`, `dat_end`, `dat_peo_id`) 
+					VALUES ( DATE_FORMAT(?, "%Y-%m-%d"),DATE_FORMAT(?, "%Y-%m-%d"),? )';
 			
 			$dateArray = array(
 					$presidentData['person_start_mandate'],
@@ -82,7 +87,11 @@ class PresidentModel
 		} 
 	}
 
-	
+	/**
+	 * @brief	Shows all Presidents
+	 * 
+	 * @return	array( $results );
+	 */
 	public function showAllPresidentsArray()
 	{
 		$sql = 'SELECT tbl_role.rol_name, peo_forename, peo_surname, 
@@ -108,6 +117,11 @@ class PresidentModel
 		
 	}
 	
+	/**
+	 * @brief	function that shows all Vice-Presidents;
+	 * 
+	 * @return	$result;
+	 */
 	public function showAllVicePresidents()
 	{ 
 		try
@@ -164,11 +178,20 @@ class PresidentModel
 		
 	}
 	
+	/**
+	 * @brief	to do... create a query or other way of combining datas and showing them into
+	 * 			tables!;
+	 */
 	public function allPresidentsAndVicePresidentsList()
 	{	
 		$vicePresidents = $this->showAllVicePresidents();
 			
 		$presidents		= $this->showAllPresidents();
+		
+		//this is silly, but is it the only way out for now, or could be
+		//sql query that combain join tables plus  WHERE tbl_role, ORDER BY, asc COMPARE
+		return $allPresidents = array( $presidents, $vicePresidents );
+		
 	}
 	
 	public function showPresidentsJoin()
@@ -194,7 +217,9 @@ class PresidentModel
 		
 	}
 	
-	
+	/**
+	 * @brief	Test Function to do...
+	 */
 	public function testTemplate()
 	{
 		
@@ -214,6 +239,9 @@ class PresidentModel
 		
 	}
 	
+	/**
+	 * @brief	renderForm to do...
+	 */
 	public function renderForm()
 	{die('renderFormInModel');
 		$form = file_get_contents( __DIR__ . '/../View/CreateUser.html');

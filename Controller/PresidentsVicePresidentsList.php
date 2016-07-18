@@ -20,10 +20,11 @@ class PresidentsVicePresidentsList
 		
 		$dataArray = $allPresidents->allPresidentsAndVicePresidentsList();
 		
-		var_dump( $dataArray ); die('in All Controller');
+		var_dump($dataArray);
 		
 		$template = include __DIR__ . '/../View/PresidentsVicePresidentsTemplate.php';
 	}
+	
 	
 }
 

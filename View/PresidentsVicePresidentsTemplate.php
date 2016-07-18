@@ -45,15 +45,17 @@
 						<th>Vice President</th>
 					</tr>
 					<?php
-						
-						for( $i = 0; $i < count($presidents); $i++ )
+						//$array( $presidents, $vicePresidents )
+						for( $i = 0; $i < count($dataArray); $i++ )
+						{	for ( $k = 0; $k++; )
 						{
 					?>
 					<tr>
-						<td><?php echo $presidents[$i]['peo_forename'], $presidents[$i]['peo_surname'], $presidents[$i]['dat_start'],$presidents[$i]['dat_end']?></td>
-						<td><?php echo $presidents[$i]['peo_forename'], $presidents[$i]['peo_surname'], $presidents[$i]['dat_start'],$presidents[$i]['dat_end']?></td>
+						<td><?php echo $dataArray[$i][$k]['peo_forename'], $dataArray[$i][$k]['peo_surname'], $dataArray[$i][$k]['dat_start'],$dataArray[$i][$k]['dat_end']?></td>
+						<td><?php echo $presidents[$k][$i]['peo_forename'], $presidents[$k][$i]['peo_surname'], $presidents[$k][$i]['dat_start'],$presidents[k][$i]['dat_end']?></td>
 					</tr>
 					<?php
+						}
 						}
 					?>
 					<!-- <tr>

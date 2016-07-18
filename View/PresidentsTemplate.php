@@ -61,26 +61,22 @@
 	</section>
 	
 	<section>
-	 <nav>
-		<div class="row">
-			<ul class="main-nav js--main-nav">
-				<li><a href="#features">Add President</a></li>
-				<li><a href="#works">List Presidents</a></li>
-				<li><a href="#cities">List Vice-Presidents</a></li>
-				<li><a href="#plans">Links between</a></li>
-			</ul>
-			<a class="mobile-nav-icon js--nav-icon"><i class="ion-navicon-round"></i></a>
-		</div>
+		 <nav>
+			<div class="row">
+				<ul class="main-nav js--main-nav">
+					<li><a href="#">Add President</a></li>
+					<li><a href="#">List Presidents</a></li>
+					<li><a href="#">List Vice-Presidents</a></li>
+					<li><a href="#">Links between</a></li>
+				</ul>
+				<a class="mobile-nav-icon js--nav-icon"><i class="ion-navicon-round"></i></a>
+			</div>
 		</nav>
 		<div class="hero-text-box">
 			<h1>Think.<br>Just Think.</h1>
 			<a class="btn btn-full js--scroll-to-plans" href="#">I'm Slow</a>
 			<a class="btn btn-ghost js--scroll-to-start" href="#">Show me more</a>
 		</div>
-	
-	
-	
-	
 	</section>
 	
 	<footer>
