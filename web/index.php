@@ -24,19 +24,7 @@ if ( $controller != '' )
 		$createPresident = new PresidentCreate;
 		
 		echo $createPresident->createPresident();
-	}
-	
-	elseif ( $controller == 'ShowPresidentsArray')//doesn't have template still; i don't need it;
-	{
-		include __DIR__ . '\..\Controller\ShowAllPresidentsArray.php';
-	
-		$showPresidents = new ShowAllPresidentsArray;
 		
-		echo $showPresidents->showAllPresidentsArray();
-	
-		echo '<br><br />';
-		echo 'controller showAllPresidents';
-
 	}
 	
 	elseif ( $controller == 'VicePresidents')//it has template!
@@ -48,6 +36,7 @@ if ( $controller != '' )
 		$showVicePresidents->showAllVicePresidents();
 		
 		echo 'index before controller ShowAllVicePresidents';
+		
 	}
 	
 	elseif ( $controller == 'Presidents' )
@@ -59,16 +48,40 @@ if ( $controller != '' )
 		$showMePresidents->showAllPresidents();
 		
 		echo 'Index passed === true';
+		
+	}
+	
+	elseif ( $controller =='PresidentsVicePresidents')
+	{
+		include __DIR__ . '\..\Controller\PresidentsVicePresidentsList.php';
+		
+		$listPresidents = new PresidentsVicePresidentsList;
+		
+		$listPresidents->PresidentsVicePresidentsList();
+		
 	}
 	
 	elseif ( $controller =='ShowJoin' )//ShowAllPresidents with join unorder!
 	{
 		include __DIR__ . '\..\Controller\ShowJoinPresidents.php';
-		
+	
 		$showJoin = new ShowJoinPresidents;
-		
+	
 		$showJoin->showPresidentsJoin();
 		
+	}
+	
+	elseif ( $controller == 'ShowPresidentsArray')//doesn't have template still; i don't need it;
+	{
+		include __DIR__ . '\..\Controller\ShowAllPresidentsArray.php';
+	
+		$showPresidents = new ShowAllPresidentsArray;
+	
+		echo $showPresidents->showAllPresidentsArray();
+	
+		echo '<br><br />';
+		echo 'controller showAllPresidents';
+	
 	}
 	
 	else 

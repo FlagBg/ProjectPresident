@@ -89,7 +89,7 @@ class PresidentModel
 				tbl_date.dat_start, tbl_date.dat_end FROM tbl_people JOIN tbl_role ON peo_rol_id = rol_id AND rol_name="President"
 				JOIN tbl_date ON dat_peo_id = peo_id
 				';
-		
+
 		try
 		{
 			$stmt = $this->db->prepare( $sql );
@@ -134,6 +134,11 @@ class PresidentModel
 			
 	}
 	
+	/**
+	 * @brief	ShowPresidents with join extract to template;
+	 * 
+	 * @return unknown|string
+	 */
 	public function showAllPresidents()
 	{
 		try 
@@ -149,15 +154,21 @@ class PresidentModel
 			
 			$presidentsArray = $stmt->fetchAll( PDO::FETCH_BOTH );
 			
-			return $presidentsArray;
-			
-			
+			return $presidentsArray;	
 		}
 		catch ( Exception $e )
 		{
 			return "Failed to show list of all Presidents";
 			echo $e;
 		}
+		
+	}
+	
+	public function allPresidentsAndVicePresidentsList()
+	{	
+		$vicePresidents = $this->showAllVicePresidents();
+			
+		$presidents		= $this->showAllPresidents();
 	}
 	
 	public function showPresidentsJoin()
@@ -167,7 +178,7 @@ class PresidentModel
 			$sql = 'SELECT tbl_role.rol_name, tbl_people.peo_forename, tbl_people.peo_surname, tbl_date.dat_start, tbl_date.dat_end
 			FROM tbl_role
 			INNER JOIN tbl_people on tbl_role.rol_id=tbl_people.peo_rol_id
-			inner JOIN tbl_date on tbl_people.peo_id=tbl_date.dat_peo_id
+			INNER JOIN tbl_date on tbl_people.peo_id=tbl_date.dat_peo_id
 			ORDER BY tbl_role.rol_name';
 			
 			$stmt = $this->db->query( $sql );

@@ -14,17 +14,16 @@ class PresidentsVicePresidentsList
 	 * 			result that is used to be imported by the controller into the view form called
 	 * 			VicePresidentTemplate;
 	 */
-	public function PresidentsVicePresidentsList()
+	public function allPresidentsAndVicePresidentsList()
 	{
-		$allPresidents = new PresidentMode();
+		$allPresidents = new PresidentModel();
 		
-		$vicePresidents = $showAllVicePresidents->showAllVicePresidents;
+		$dataArray = $allPresidents->allPresidentsAndVicePresidentsList();
+		
+		var_dump( $dataArray ); die('in All Controller');
 		
 		$template = include __DIR__ . '/../View/PresidentsVicePresidentsTemplate.php';
 	}
-	
-	
-	
 	
 }
 

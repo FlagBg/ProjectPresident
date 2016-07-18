@@ -50,7 +50,7 @@
 						{
 					?>
 					<tr>
-						<td>1.<?php echo $presidents[$i]['peo_forename'], $presidents[$i]['peo_surname'], $presidents[$i]['dat_start'],$presidents[$i]['dat_end']?></td>
+						<td><?php echo $presidents[$i]['peo_forename'], $presidents[$i]['peo_surname'], $presidents[$i]['dat_start'],$presidents[$i]['dat_end']?></td>
 						<td><?php echo $presidents[$i]['peo_forename'], $presidents[$i]['peo_surname'], $presidents[$i]['dat_start'],$presidents[$i]['dat_end']?></td>
 					</tr>
 					<?php
