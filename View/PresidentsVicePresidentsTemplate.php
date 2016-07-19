@@ -44,20 +44,33 @@
 						<th>President</th>
 						<th>Vice President</th>
 					</tr>
-					<?php
-						//$array( $presidents, $vicePresidents )
-						for( $i = 0; $i < count($dataArray); $i++ )
-						{	for ( $k = 0; $k++; )
-						{
-					?>
 					<tr>
-						<td><?php echo $dataArray[$i][$k]['peo_forename'], $dataArray[$i][$k]['peo_surname'], $dataArray[$i][$k]['dat_start'],$dataArray[$i][$k]['dat_end']?></td>
-						<td><?php echo $presidents[$k][$i]['peo_forename'], $presidents[$k][$i]['peo_surname'], $presidents[$k][$i]['dat_start'],$presidents[k][$i]['dat_end']?></td>
+						<td>
+							<?php foreach ( $dataArray[0] as $key => $row) 
+							{
+								foreach ( $row as $key2 => $val )
+								{
+									echo $val;
+								}
+							}
+							 ?>
+						</td>
+						
+						<td><?php 
+						foreach ( $dataArray[1] as $key => $row) 
+							{
+								foreach ( $row as $key2 => $val )
+								{
+									echo $val ."<br>";
+								}
+								echo "<br>";
+							}
+							?>
+						</td>
+						
 					</tr>
-					<?php
-						}
-						}
-					?>
+					
+					
 					<!-- <tr>
 						<td>1.<?php //echo $stmt[0]['peo_forename'], $stmt[0]['peo_surname'], $stmt[0]['dat_start'],$stmt[0]['dat_end']?></td>
 						<td><?php //echo $stmt[0]['peo_forename'], $stmt[0]['peo_surname'], $stmt[0]['dat_start'],$stmt[0]['dat_end']?></td>
