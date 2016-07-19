@@ -135,7 +135,7 @@ class PresidentModel
 			
 			$result = $stmt->execute();
 			
-			$allVicePresidentsArray = $stmt->fetchAll(PDO::FETCH_BOTH);
+			$allVicePresidentsArray = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			
 			return $allVicePresidentsArray;
 			
@@ -166,7 +166,7 @@ class PresidentModel
 			
 			$presidentsList = $stmt->execute();
 			
-			$presidentsArray = $stmt->fetchAll( PDO::FETCH_BOTH );
+			$presidentsArray = $stmt->fetchAll( PDO::FETCH_ASSOC );
 			
 			return $presidentsArray;	
 		}
@@ -190,7 +190,7 @@ class PresidentModel
 		
 		//this is silly, but is it the only way out for now, or could be
 		//sql query that combain join tables plus  WHERE tbl_role, ORDER BY, asc COMPARE
-		return $allPresidents = array( $presidents, $vicePresidents );
+		return $allPresidents = array( 'presidents' => $presidents, 'vice-presidents' => $vicePresidents );
 		
 	}
 	

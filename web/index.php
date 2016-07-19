@@ -58,7 +58,7 @@ if ( $controller != '' )
 		$listPresidents = new PresidentsVicePresidentsList;
 		
 		$listPresidents->allPresidentsAndVicePresidentsList();
-		//var_dump($listPresidents);die('here');
+		var_dump($listPresidents);die('here');
 	}
 	
 	elseif ( $controller =='ShowJoin' )//ShowAllPresidents with join unorder!
@@ -90,13 +90,23 @@ if ( $controller != '' )
 	}
 }
 
-
-
 else 
 {
 		$form = file_get_contents( __DIR__ . '/../View/CreateUser.html');
 			
 		print ( $form );
 }
+
+/* require '../vendor/autoload.php';
+
+use Philo\Blade\Blade;
+
+$views = __DIR__ . '/views';
+$cache = __DIR__ . '/cache';
+
+$blade = new Blade( $views, $cache );
+echo $blade->view()->make('hello')->render();
+die('index'); */
+
 
 ?>
