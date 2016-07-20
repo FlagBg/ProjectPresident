@@ -49,6 +49,7 @@
 							" Mandate Starts " . $presidents[$i]['dat_start']. " ",
 							"mandate end " . $presidents[$i]['dat_end'] . " "
 						?>
+							<!-- <button name="button">Click me</button> -->
 						</td>
 					</tr>
 					<?php
@@ -144,7 +145,7 @@
 		 <nav>
 			<div class="row">
 				<ul class="main-nav js--main-nav">
-					<li><a href="index.php?controller=CreateNew">Add President</a></li>
+					<li><a href="index.php">Add President</a></li>
 					<li><a href="index.php?controller=Presidents">List Presidents</a></li>
 					<li><a href="index.php?controller=VicePresidents">List Vice-Presidents</a></li>
 					<li><a href="index.php?controller=PresidentsVicePresidents">Links between</a></li>

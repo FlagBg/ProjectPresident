@@ -179,7 +179,7 @@ class PresidentModel
 	}
 	
 	/**
-	 * @brief	to do... create a query or other way of combining datas and showing them into
+	 * @brief	create a query or other way of combining datas and showing them into
 	 * 			tables!;
 	 */
 	public function allPresidentsAndVicePresidentsList()

@@ -58,7 +58,7 @@ if ( $controller != '' )
 		$listPresidents = new PresidentsVicePresidentsList;
 		
 		$listPresidents->allPresidentsAndVicePresidentsList();
-		var_dump($listPresidents);die('here');
+		
 	}
 	
 	elseif ( $controller =='ShowJoin' )//ShowAllPresidents with join unorder!

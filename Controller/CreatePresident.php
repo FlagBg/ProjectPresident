@@ -22,8 +22,6 @@ class PresidentCreate
 	 */
 	public function createPresident()
 	{
-		//echo "testing<br />";
-		
 		if( !empty( $_POST) )
 		{
 			$presidentData = array(
@@ -44,13 +42,11 @@ class PresidentCreate
 	
 		if ($result == true)
 		{
-			// eventually this should be a view.
 			echo "You have successfully added a person.";
 			
-			/*$form = file_get_contents( __DIR__ . '/../View/CreateUser.html');
-			print ( $form );  This way it is called the form and print it, because it is inside*/
-			//other way;
 			$templateForm = include __DIR__ . '/../View/CreateUser.html';
+			$templateForm = include __DIR__ . '/../View/Home.html';
+			;
 		}
 		else 
 		{

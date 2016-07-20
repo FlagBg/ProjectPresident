@@ -9,14 +9,15 @@ class ShowAllPresidents
 		
 	}
 	
+	/**
+	 * @brief function that shows all the registered presidents;
+	 */
 	public function showAllPresidents()
 	{
-		//echo "testing";
 		
 		$presidentModel = new PresidentModel();
 		
 		$dataArray = $presidentModel->showAllPresidents();
-		
 		
 		if ($dataArray == "Failed")
 		{
@@ -30,10 +31,5 @@ class ShowAllPresidents
 			print_r( $dataArray );
 		}
 	}
-	
-	
-	
-	
-	
 	
 }
