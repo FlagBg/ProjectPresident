@@ -10,7 +10,6 @@
 		
 		<title>US Vice Presidents list</title>
 	</head>
-
 	<body id="vice-president-list-page">
 
 	<header>
@@ -27,17 +26,14 @@
 	</header>
 	
 	<section class="section-table">
-		<div class="container">
-				
+		<div class="container">	
 		<div class="row padded-bottom">
 			<div class="col-xs-12">
-				<table class="table">
-				
+				<table class="table" border="1">
 					<tr>
 						<th>Vice Presidents List</th>
 					</tr>
 					<?php
-						
 						for( $i = 0; $i < count( $vicePresidents ); $i++ )
 						{
 					?>
@@ -48,13 +44,11 @@
 										"mandate end " . $vicePresidents[$i]['dat_end'] . " "
 						?>
 						</td>
-						
 					</tr>
 					<?php
 						}
 					?>
 				</table>
-				
 			</div>
 		</div>
 	</div>
@@ -64,10 +58,10 @@
 	 <nav>
 		<div class="row">
 			<ul class="main-nav js--main-nav">
-				<li><a href="#features">Add President</a></li>
-				<li><a href="#works">List Presidents</a></li>
-				<li><a href="#cities">List Vice-Presidents</a></li>
-				<li><a href="#plans">Links between</a></li>
+				<li><a href="index.php?controller=CreateNew">Add President</a></li>
+				<li><a href="index.php?controller=Presidents">List Presidents</a></li>
+				<li><a href="index.php?controller=VicePresidents">List Vice-Presidents</a></li>
+				<li><a href="index.php?controller=PresidentsVicePresidents">Links between</a></li>
 			</ul>
 			<a class="mobile-nav-icon js--nav-icon"><i class="ion-navicon-round"></i></a>
 		</div>
@@ -78,11 +72,7 @@
 			<a class="btn btn-ghost js--scroll-to-start" href="#">Show me more</a>
 		</div>
 	
-	
-	
-	
 	</section>
-	
 	<footer>
 		<div class="row">
 			<div class="col span-1-of-2">
@@ -94,7 +84,6 @@
 					<li><a href="#">Android App</a></li>
 				</ul>
 			</div>
-				
 		</div>
 		<div class="row">
 			<p>
@@ -106,9 +95,8 @@
 			</p>
 		</div>
 	</footer>
+</body>
 
-	
-	</body>
 </html>
 	
 	

@@ -188,8 +188,6 @@ class PresidentModel
 			
 		$presidents		= $this->showAllPresidents();
 		
-		//this is silly, but is it the only way out for now, or could be
-		//sql query that combain join tables plus  WHERE tbl_role, ORDER BY, asc COMPARE
 		return $allPresidents = array( 'presidents' => $presidents, 'vice-presidents' => $vicePresidents );
 		
 	}

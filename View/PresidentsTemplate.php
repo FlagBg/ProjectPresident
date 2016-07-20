@@ -31,7 +31,7 @@
 				
 		<div class="row padded-bottom">
 			<div class="col-xs-12">
-				<table class="table">
+				<table class="table-presidents" border ="1" class="table">
 				
 					<tr>
 						<th>Presidents List</th>
@@ -42,17 +42,97 @@
 						{
 					?>
 					<tr>
-						<td><?php echo $presidents[$i]['peo_forename'] . " ", 
-										$presidents[$i]['peo_surname'] . ":", 
-										" Mandate Starts " . $presidents[$i]['dat_start'] . " ",
-										"mandate end " . $presidents[$i]['dat_end'] . " "
+						<td>
+						<?php 
+						echo $presidents[$i]['peo_forename'] . " ", 
+							$presidents[$i]['peo_surname'] . ":", 
+							" Mandate Starts " . $presidents[$i]['dat_start']. " ",
+							"mandate end " . $presidents[$i]['dat_end'] . " "
 						?>
 						</td>
-						
 					</tr>
 					<?php
 						}
 					?>
+				</table>
+			</div>
+			
+			<div>
+				<p>New Table</p>
+				
+				<table class="New Table" border="1" class="table2">
+					<tr>
+						<th>Title</th>
+						<th>Firstname</th>
+						<th>Surname</th>
+						<th>Mandate starts</th>
+						<th>Mandate ends</th>
+					</tr>
+					<tr>
+						<td>
+						<?php 
+						for ( $i = 0; $i<count($presidents); $i++ )
+						{
+							echo $presidents[$i]['rol_name'] . "<br>";
+						}
+						?>		
+						</td>
+						<td>
+						<?php 
+						for ( $i = 0; $i<count($presidents); $i++ )
+						{
+							echo $presidents[$i]['peo_forename'] . "<br>";
+						}
+						?>		
+						</td>
+						<td>
+						<?php 
+						for ( $i = 0; $i<count($presidents); $i++ )
+						{
+							echo $presidents[$i]['peo_surname'] . "<br>";
+						}
+						?>	
+						</td>
+						<td>
+						<?php 
+						for ( $i = 0; $i<count($presidents); $i++ )
+						{
+							echo $presidents[$i]['dat_start'] ."<br>";
+						}
+						?>	
+						</td>
+						<td>
+						<?php 
+						for ( $i = 0; $i<count($presidents); $i++ )
+						{
+							echo $presidents[$i]['dat_end'] ."<br>";
+						}
+						?>	
+						</td>
+					</tr>
+				</table>
+			</div>
+				
+			<div>
+				<p>Another Table</p>
+				<table class ="Another table" border="1">
+				
+				<tr>
+					<th>Presidents List</th>
+				</tr>	
+				<tr>
+					<td>
+					<?php		
+					for( $i = 0; $i < count( $presidents ); $i++ )
+						{ 
+							echo $presidents[$i]['peo_forename'] . " ", 
+							$presidents[$i]['peo_surname'] . ":", 
+							" Mandate Starts " . $presidents[$i]['dat_start']. " ",
+							"mandate end " . $presidents[$i]['dat_end'] . "<br>";
+						}
+					?>
+					</td>	
+				</tr>		
 				</table>
 				
 			</div>
@@ -64,10 +144,10 @@
 		 <nav>
 			<div class="row">
 				<ul class="main-nav js--main-nav">
-					<li><a href="#">Add President</a></li>
-					<li><a href="#">List Presidents</a></li>
-					<li><a href="#">List Vice-Presidents</a></li>
-					<li><a href="#">Links between</a></li>
+					<li><a href="index.php?controller=CreateNew">Add President</a></li>
+					<li><a href="index.php?controller=Presidents">List Presidents</a></li>
+					<li><a href="index.php?controller=VicePresidents">List Vice-Presidents</a></li>
+					<li><a href="index.php?controller=PresidentsVicePresidents">Links between</a></li>
 				</ul>
 				<a class="mobile-nav-icon js--nav-icon"><i class="ion-navicon-round"></i></a>
 			</div>
@@ -102,7 +182,5 @@
 			</p>
 		</div>
 	</footer>
-
-	
 	</body>
 </html>

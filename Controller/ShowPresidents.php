@@ -15,11 +15,6 @@ class ShowPresidents
 		
 		$presidents = $presidentsAll->showAllPresidents();
 		
-		for( $i = 0; $i < count($presidents); $i++ )
-		{
-			echo $presidents[$i]['peo_forename'] . "<br><br />";
-		}		
-		
 		$template = include __DIR__ . '/../View/PresidentsTemplate.php';
 		echo 'ShowAllPresidentsFunction';
 		
