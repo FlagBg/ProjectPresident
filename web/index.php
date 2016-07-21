@@ -61,6 +61,14 @@ if ( $controller != '' )
 		
 	}
 	
+	elseif ( $controller=='EditPresidents')
+	{
+		include __DIR__ . '\..\Controller\EditPresidentController.php';
+		
+		
+		
+	}
+	
 	elseif ( $controller =='ShowJoin' )//ShowAllPresidents with join unorder!
 	{
 		include __DIR__ . '\..\Controller\ShowJoinPresidents.php';

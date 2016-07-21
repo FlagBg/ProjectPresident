@@ -87,6 +87,65 @@ class PresidentModel
 		} 
 	}
 
+	
+	public function editPresident( $presidentData )
+	{
+		$sql0 = 'SELECT * FROM tbl_role WHERE rol_name="President" LIMIT 1';
+	
+		$roleArray = array( $presidentData['person_role'] );
+		
+		try
+		{
+			$stmt = $this->db->prepare( $sql0 );
+			$result = $stmt->execute( $roleArray );
+				
+			// find the rol_id returned by the query. and use it in the sql query to insert into the tbl_people table.
+				
+			$returnedArray = $stmt->fetchAll(PDO::FETCH_BOTH);
+				
+			$roleid = $returnedArray[0]['rol_id'];
+				
+			$sql = 'INSERT INTO `tbl_people`(`peo_forename`, `peo_surname`, `peo_rol_id`) VALUES ( ?,?,? )';
+				
+			$presidentData = array(
+ 					'person_first_name'		=>	trim( $_GET['person_first_name'] ),
+ 					'person_last_name'		=>	trim( $_GET['person_last_name'] ),
+ 					'person_start_mandate'	=>	trim( $_GET['start_date'] ),
+ 					'person_end_mandate'	=>	trim( $_GET['end_date']),
+ 					'person_role'			=>	trim( $_GET['person_role'] )
+		);				
+				
+			//$stmt = $this->db->prepare( $sql );
+				
+			//$result = $stmt->execute( $presidentData );
+				
+			//$sql1 = 'INSERT INTO `tbl_date`( `dat_start`, `dat_end`, `dat_peo_id`)
+			//		VALUES ( DATE_FORMAT(?, "%Y-%m-%d"),DATE_FORMAT(?, "%Y-%m-%d"),? )';
+				
+			$dateArray = array(
+					$presidentData['person_start_mandate'],
+					$presidentData['person_end_mandate'],
+					$lastInsertId
+			);
+				
+			$stmt = $this->db->prepare($sql1);
+				
+			$result = $stmt->execute($dateArray);
+				
+			return true;
+		}
+	
+		catch (Exception $e)
+		{
+			return false;
+		}
+	}
+	
+	
+	
+	
+	
+	
 	/**
 	 * @brief	Shows all Presidents
 	 * 

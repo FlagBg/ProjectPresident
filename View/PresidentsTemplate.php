@@ -63,7 +63,7 @@
 											$('.edit').click(function(event){
 													event.preventDefault();
 													var value = $(this).attr('value');
-													location.href="index.php?id="+value
+													location.href="index.php?="+value
 												});
 										});
 							</script>
