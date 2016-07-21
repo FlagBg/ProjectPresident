@@ -49,7 +49,7 @@
 							" Mandate Starts " . $presidents[$i]['dat_start']. " ",
 							"mandate end " . $presidents[$i]['dat_end'] . " "
 						?>
-							<!-- <button name="button">Click me</button> -->
+							<button type="submit" class="buttonEdit" name="buttonEdit">Click me</button>
 						</td>
 					</tr>
 					<?php
@@ -59,7 +59,7 @@
 			</div>
 			
 			<div>
-				<p>New Table</p>
+				<h3>Table that We work for Edit</h3>
 				
 				<table class="New Table" border="1" class="table2">
 					<tr>
@@ -68,49 +68,58 @@
 						<th>Surname</th>
 						<th>Mandate starts</th>
 						<th>Mandate ends</th>
+						<th>Actions</th>
 					</tr>
+					<?php 
+					for ( $i = 0; $i<count($presidents); $i++ )
+					{
+						?>
 					<tr>
 						<td>
 						<?php 
-						for ( $i = 0; $i<count($presidents); $i++ )
-						{
-							echo $presidents[$i]['rol_name'] . "<br>";
-						}
+						
+							echo $presidents[$i]['rol_name'];
+						
 						?>		
 						</td>
 						<td>
 						<?php 
-						for ( $i = 0; $i<count($presidents); $i++ )
-						{
-							echo $presidents[$i]['peo_forename'] . "<br>";
-						}
+						
+							echo $presidents[$i]['peo_forename'];
+					
 						?>		
 						</td>
 						<td>
 						<?php 
-						for ( $i = 0; $i<count($presidents); $i++ )
-						{
-							echo $presidents[$i]['peo_surname'] . "<br>";
-						}
+						
+						
+							echo $presidents[$i]['peo_surname'];
+						
 						?>	
 						</td>
 						<td>
 						<?php 
-						for ( $i = 0; $i<count($presidents); $i++ )
-						{
-							echo $presidents[$i]['dat_start'] ."<br>";
-						}
+						
+							echo $presidents[$i]['dat_start'];
+						
 						?>	
 						</td>
 						<td>
 						<?php 
-						for ( $i = 0; $i<count($presidents); $i++ )
-						{
-							echo $presidents[$i]['dat_end'] ."<br>";
-						}
+						
+							echo $presidents[$i]['dat_end'];
+						
 						?>	
+						</td>
+						<td>
+						<!--	<a href = "index.php?id=<?php //echo $presidents[$i]['peo_id']; ?>" >Edit</a> -->
+							<a href = "" class="edit" value="<?= $presidents[$i]['peo_id']; ?>" >Edit</a>
+							
 						</td>
 					</tr>
+					<?php
+ 						} 
+					?>
 				</table>
 			</div>
 				
@@ -126,7 +135,7 @@
 					<?php		
 					for( $i = 0; $i < count( $presidents ); $i++ )
 						{ 
-							echo $presidents[$i]['peo_forename'] . " ", 
+							echo $presidents[$i]['peo_id']. " " . $presidents[$i]['peo_forename'] . " ", 
 							$presidents[$i]['peo_surname'] . ":", 
 							" Mandate Starts " . $presidents[$i]['dat_start']. " ",
 							"mandate end " . $presidents[$i]['dat_end'] . "<br>";
@@ -139,6 +148,17 @@
 			</div>
 		</div>
 	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+							<script type="text/javascript">
+								$(document).ready(function()
+										{
+											$('.edit').click(function(event){
+													event.preventDefault();
+													var value = $(this).attr('value');
+													location.href="index.php?id="+value
+												});
+										});
+							</script>
 	</section>
 	
 	<section>

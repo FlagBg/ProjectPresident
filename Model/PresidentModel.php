@@ -151,13 +151,13 @@ class PresidentModel
 	/**
 	 * @brief	ShowPresidents with join extract to template;
 	 * 
-	 * @return unknown|string
+	 * @return unknown|string	adding peo_id for the purposes of EIDT
 	 */
 	public function showAllPresidents()
 	{
 		try 
 		{
-			$sql = 'SELECT tbl_role.rol_name, peo_forename, peo_surname,
+			$sql = 'SELECT tbl_role.rol_name, peo_id, peo_forename, peo_surname,
 				tbl_date.dat_start, tbl_date.dat_end
 				FROM tbl_people JOIN tbl_role ON peo_rol_id = rol_id AND rol_name="President"
 				JOIN tbl_date ON dat_peo_id = peo_id';
@@ -220,7 +220,6 @@ class PresidentModel
 	 */
 	public function testTemplate()
 	{
-		
 		$template = file_get_contents( __DIR__ . '/../View/show_top.html' );
 		
 		$dataTemplate = array(

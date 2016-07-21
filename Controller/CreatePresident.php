@@ -35,7 +35,19 @@ class PresidentCreate
 			//print_r($presidentData);
 			//echo "<br />";
 		}
-
+		
+		/*
+		if ($_GET['id')
+		{	if peo_id = ?
+			;
+		}
+		
+		else ()
+		{
+			
+		}
+		*/
+		
 		$presidentModel = new PresidentModel();
 
 		$result = $presidentModel->createPresident( $presidentData );
