@@ -13,31 +13,35 @@ class EditPresidentController
 	public function __construct()
 	{
 		$this->presidentEditModel = new PresidentModel();
-		//var_dump($this->presidentEditModel);
+		
 		$this->peo_id = $_GET['id'];
-		//var_dump($this->peo_id);
 	}
 	
 	
 	public function presidentEdit()
 	{	//$this->presidentEditModel->editPresident( $this->presidentData );
-		var_dump($this->peo_id);
-		$presidentData = array(
-					//'person_first_name'		=>	trim( $_GET['person_first_name'] ),
-					//'person_last_name'		=>	trim( $_GET['person_last_name'] )
-					
+		$presidentData = array( 
+				//$_POST['rol_name'], 
+				$_POST['peo_forename'], 
+ 				$_POST['peo_surname'],
+// 				$_POST['dat_start'],
+// 				$_POST['dat_end'],
+// 				$_POST['person_first_name']
+				
 			);
-		var_dump($presidentData);
+		
+		//var_dump($presidentData);
 		
 		$this->presidentEditModel->presidentEdit( $this->peo_id, $this->presidentData );
+		var_dump($this->peo_id);
+		//var_dump($this->presidentData);die('here in controller');//THIS ONE NEEDS TO BE FIXED!!!
 		
 	}
 	
 	public function renderForm()
 	{//var_dump($this->peo_id);
 		$this->getPresidentData();
-		//var_dump($this->getPresidentData() );
-												//TO DO!!!
+
 		$form = include __DIR__ . '/../View/EditPresidentVrPr.php';
 		
 		print $form;
@@ -46,7 +50,6 @@ class EditPresidentController
 	public function getPresidentData()
 	{	
 		$this->presidentData = $this->presidentEditModel->getPresidentData( $this->peo_id );
-		var_dump($this->peo_id);
 	}	
 	
 }

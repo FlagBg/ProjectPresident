@@ -23,7 +23,10 @@ if ( $controller != '' )
 		
 		$createPresident = new PresidentCreate;
 		
+		$createPresident->createPresident();
 		echo $createPresident->createPresident();
+		
+		
 		
 	}
 	

@@ -31,13 +31,13 @@
 	<section class = "Adding Presidents">
 		<h3>Editing President</h3>
 		
-			<form action="?controller=EditPresidents" method="GET" >
+			<form action="?controller=EditPresidents" method="POST" >
 			
 				<div id="form_container"> 
 					
-					<div class = "forename">
+					<div class="forename">
 						<div id="forename_container">
-							<div id="forename_label_container"><label for="person_first_name" id="person_first_name_label">Person's First Name:</label></div>
+							<div id="forename_label_container"><label for="person_first_name" id="person_first_name">Person's First Name:</label></div>
 							<input type="text" name="person_first_name" value="<?php echo $this->presidentData['peo_forename'];?>">						
 						</div>
 					</div>

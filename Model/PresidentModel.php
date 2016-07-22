@@ -33,12 +33,10 @@ class PresidentModel
 	 */
 	public function createPresident( $presidentData )
 	{
-		//print_r($presidentData);
-		//echo "<br /><br />";
 		$sql0 = 'SELECT * FROM tbl_role WHERE rol_name=? LIMIT 1';
 		
 		$roleArray = array( $presidentData['person_role'] );
-		//print_r( $returnedArray );//echo "<br /><br/>";
+		//print_r( $returnedArray );echo "<br /><br/>";
 		try 
 		{
 			$stmt = $this->db->prepare( $sql0 );
@@ -87,19 +85,19 @@ class PresidentModel
 	
 	public function presidentEdit( $peo_id, $presidentData )
 	{
-		$_GET['id'] = (int) $peo_id;
+		$_get['id'] = (int) $peo_id;
+		var_dump( $_GET['id'] );
+		$sql = 'UPDATE tbl_people SET peo_forname =?,
+									peo_surname = ? 
+				WHERE peo_id = ' . $peo_id;
+				
 		
-// 		$sql = 'UPDATE tbl_people
-//  				SET peo_forename=?,
-// 					peo_surname=?,
- 					
-//  				WHERE peo_id = ' . $peo_id;
+		$stmt = $this->db->prepare( $sql );
 		
-// 		$stmt 	= $this->db->prepare( $sql );
+		$result = $stmt->execute( $presidentData );
 		
-// 		$result	= $stmt->execute( $presidentData );
-		
-// 		return result;
+		return $result;
+
 		
 	}
 	
@@ -133,12 +131,7 @@ class PresidentModel
 		}
 			
 	}
-	
-	
-	
-	
-	
-	
+
 	/**
 	 * @brief	Shows all Presidents
 	 * 
