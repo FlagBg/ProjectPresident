@@ -39,14 +39,11 @@ class PresidentModel
 		
 		$roleArray = array( $presidentData['person_role'] );
 		//print_r( $returnedArray );//echo "<br /><br/>";
-		
 		try 
 		{
 			$stmt = $this->db->prepare( $sql0 );
 			$result = $stmt->execute( $roleArray );
-			
 			// find the rol_id returned by the query. and use it in the sql query to insert into the tbl_people table.
-			
 			$returnedArray = $stmt->fetchAll(PDO::FETCH_BOTH);
 			
 			$roleid = $returnedArray[0]['rol_id'];
@@ -88,57 +85,53 @@ class PresidentModel
 	}
 
 	
-	public function editPresident( $presidentData )
+	public function presidentEdit( $peo_id, $presidentData )
 	{
-		$sql0 = 'SELECT * FROM tbl_role WHERE rol_name="President" LIMIT 1';
-	
-		$roleArray = array( $presidentData['person_role'] );
+		$_GET['id'] = (int) $peo_id;
 		
-		try
-		{
-			$stmt = $this->db->prepare( $sql0 );
-			$result = $stmt->execute( $roleArray );
-				
-			// find the rol_id returned by the query. and use it in the sql query to insert into the tbl_people table.
-				
-			$returnedArray = $stmt->fetchAll(PDO::FETCH_BOTH);
-				
-			$roleid = $returnedArray[0]['rol_id'];
-				
-			$sql = 'INSERT INTO `tbl_people`(`peo_forename`, `peo_surname`, `peo_rol_id`) VALUES ( ?,?,? )';
-				
-			$presidentData = array(
- 					'person_first_name'		=>	trim( $_GET['person_first_name'] ),
- 					'person_last_name'		=>	trim( $_GET['person_last_name'] ),
- 					'person_start_mandate'	=>	trim( $_GET['start_date'] ),
- 					'person_end_mandate'	=>	trim( $_GET['end_date']),
- 					'person_role'			=>	trim( $_GET['person_role'] )
-		);				
-				
-			//$stmt = $this->db->prepare( $sql );
-				
-			//$result = $stmt->execute( $presidentData );
-				
-			//$sql1 = 'INSERT INTO `tbl_date`( `dat_start`, `dat_end`, `dat_peo_id`)
-			//		VALUES ( DATE_FORMAT(?, "%Y-%m-%d"),DATE_FORMAT(?, "%Y-%m-%d"),? )';
-				
-			$dateArray = array(
-					$presidentData['person_start_mandate'],
-					$presidentData['person_end_mandate'],
-					$lastInsertId
-			);
-				
-			$stmt = $this->db->prepare($sql1);
-				
-			$result = $stmt->execute($dateArray);
-				
-			return true;
-		}
+// 		$sql = 'UPDATE tbl_people
+//  				SET peo_forename=?,
+// 					peo_surname=?,
+ 					
+//  				WHERE peo_id = ' . $peo_id;
+		
+// 		$stmt 	= $this->db->prepare( $sql );
+		
+// 		$result	= $stmt->execute( $presidentData );
+		
+// 		return result;
+		
+	}
 	
-		catch (Exception $e)
+	public function getPresidentData( $peo_id )
+	{
+		//$_GET['id'] = (int) $peo_id;
+		
+		$sql	= 'SELECT tbl_people.peo_id,tbl_role.rol_name, tbl_people.peo_forename, tbl_people.peo_surname, tbl_date.dat_start, tbl_date.dat_end
+			FROM tbl_role
+			INNER JOIN tbl_people on tbl_role.rol_id=tbl_people.peo_rol_id
+			INNER JOIN tbl_date on tbl_people.peo_id=tbl_date.dat_peo_id
+			 WHERE peo_id = ?';
+		
+		$stmt = $this->db->prepare( $sql );
+		
+		$result	= $stmt->execute( array( $peo_id ) );
+		
+		$presidentData	= array();
+		
+		if ( $result )
 		{
-			return false;
+			$presidentData = $stmt->fetch( PDO::FETCH_ASSOC );
+			
+			var_dump($presidentData);
+			
+			return $presidentData;
 		}
+		else 
+		{
+			echo 'an error has occured';
+		}
+			
 	}
 	
 	
@@ -329,6 +322,13 @@ class PresidentModel
 			//shows all presidents!
 			$sql3 = 'SELECT tbl_role.rol_name, peo_forename, peo_surname, tbl_date.dat_start, tbl_date.dat_end FROM tbl_people JOIN tbl_role ON peo_rol_id = rol_id AND rol_name="President"
 					JOIN tbl_date ON dat_peo_id = peo_id';
+			
+			
+			$sql4 = 'SELECT tbl_people.peo_id,tbl_role.rol_name, tbl_people.peo_forename, tbl_people.peo_surname, tbl_date.dat_start, tbl_date.dat_end
++			FROM tbl_role
++			INNER JOIN tbl_people on tbl_role.rol_id=tbl_people.peo_rol_id
++			INNER JOIN tbl_date on tbl_people.peo_id=tbl_date.dat_peo_id
++			 WHERE peo_id = 33';
 	
 		}
 		catch ( Exception $e)

@@ -46,7 +46,7 @@
 					<td><?php echo $presidents[$i]['dat_end']; ?></td>
 					<td>
 					<!--	<a href = "index.php?id=<?php //echo $presidents[$i]['peo_id']; ?>" >Edit</a> -->
-						<a href = "" class="edit" value="<?= $presidents[$i]['peo_id']; ?>" >Edit</a>	
+						<a href = " " class="edit" value="<?= $presidents[$i]['peo_id']; ?>" >Edit</a>	
 					</td>
 				</tr>
 				<?php
@@ -63,7 +63,7 @@
 											$('.edit').click(function(event){
 													event.preventDefault();
 													var value = $(this).attr('value');
-													location.href="index.php?id="+value
+													location.href="index.php?controller=EditPresidents&id="+value
 												});
 										});
 							</script>

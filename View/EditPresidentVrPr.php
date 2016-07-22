@@ -9,7 +9,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		
-		<title>Add President</title>
+		<title>Edit Presidents Template</title>
 		
 	</head>
 	
@@ -29,31 +29,40 @@
 	</script>
 	
 	<section class = "Adding Presidents">
-		<h3>Adding President</h3>
+		<h3>Editing President</h3>
 		
-			<form action="?controller=CreateNew" method="GET" >
+			<form action="?controller=EditPresidents" method="GET" >
 			
 				<div id="form_container"> 
-				<div class = "forename">
-					<div id="forename_container">
-						<div id="forename_label_container"><label for="person_first_name" id="person_first_name_label">Person's First Name:</label></div>
-						<div id="forename_input_container"><input type="text" name="person_first_name" id="person_first_name" /></div>
-					</div>
-				</div>
 					
-					<div id="lastname_container">
-						<div id="lastname_label_container"><label for="person_last_name" id="person_last_name_label">Person's Surname</label></div>
-						<div id="lastname_input_container"><input type="text" name="person_last_name" id="person_last_name" /></div>
+					<div class = "forename">
+						<div id="forename_container">
+							<div id="forename_label_container"><label for="person_first_name" id="person_first_name_label">Person's First Name:</label></div>
+							<input type="text" name="person_first_name" value="<?php echo $this->presidentData['peo_forename'];?>">						
+						</div>
 					</div>
 					
-					<div id="start_date_container">
-						<div id="start_date_label_container"><label for="start_date" id="start_date_label"> Start mandate</label></div>
-						<div id="start_date_input_container"><input type="date" name="start_date" id="start_date" /></div>
+					<div class="lastname">
+						<div id="lastname_container">
+							<div id="lastname_label_container"><label for="person_last_name" id="person_last_name_label">Person's Surname</label></div>
+							<input type="text" name="person_last_name" id="person_last_name" value="<?php echo $this->presidentData['peo_surname']; ?>" />
+						</div>
 					</div>
 					
-					<div id="end_date_container">
-						<div id="end_date_label_container"><label for="end_date" id="end_date_label"> End mandate</label></div>
-						<div id="end_date_input_container"><input type="date" name="end_date" id="end_date" /></div>
+					<div class ="start_date">
+						<div id="start_date_container">
+							<div id="start_date_label_container"><label for="start_date" id="start_date_label"> Start mandate</label></div>
+							<div id="start_date_input_container"><input type="date" name="start_date" id="start_date"
+							value="<?php echo $this->presidentData['dat_start']; ?>" /></div>
+						</div>
+					</div>
+					
+					<div class="end_date">
+						<div id="end_date_container">
+							<div id="end_date_label_container"><label for="end_date" id="end_date_label"> End mandate</label></div>
+							<div id="end_date_input_container"><input type="date" name="end_date" id="end_date"
+							value="<?php echo $this->presidentData['dat_end']; ?>" /></div>
+						</div>
 					</div>
 					
 <!--  				<div id="dob_date_container">
@@ -61,19 +70,20 @@
 						<div id="dob_date_input_container"><input type="date" name="dob_date" id="dob_date" /></div>
 					</div>   -->	
 					
-					<div id="role_container">
-						<div id="role_label_container"><label for="person_role">The Person is:</label></div>
-						<div id="role_select_container">
-							<select name="person_role" id="person_role">
-								<option value="0" >Needs to be</option>
-								<option value="President" >President</option>
-								<option value="Vice-President" >Vice President</option>
-							</select>
+					<div class="roles">
+						<div id="role_container">
+							<div id="role_label_container"><label for="person_role">The Person is:<?php echo $this->presidentData['rol_name'];?></label></div>
+							<div id="role_select_container">
+								<select name="person_role" id="person_role">
+									<option value="0" >Needs to be</option>
+									<option value="President" >President</option>
+									<option value="Vice-President" >Vice President</option>
+								</select>
+							</div>
 						</div>
 					</div>
-					
 					<div id="submit_container">
-						<input type="submit" name="submit" value="Register" onClick="return validate(); return false;" />
+						<input type="submit" name="submit" value="Edit" onClick="return validate(); return false;" />
 					</div>
 					
 				</div> <!-- form container div --> 

@@ -22,14 +22,14 @@ class PresidentCreate
 	 */
 	public function createPresident()
 	{
-		if( !empty( $_POST) )
+		if( !empty( $_GET) )
 		{
 			$presidentData = array(
-					'person_first_name'		=>	trim( $_POST['person_first_name'] ),
-					'person_last_name'		=>	trim( $_POST['person_last_name'] ),
-					'person_start_mandate'	=>	trim( $_POST['start_date'] ),
-					'person_end_mandate'	=>	trim( $_POST['end_date'] ),
-					'person_role'			=>	trim( $_POST['person_role'] )
+					'person_first_name'		=>	trim( $_GET['person_first_name'] ),
+					'person_last_name'		=>	trim( $_GET['person_last_name'] ),
+					'person_start_mandate'	=>	trim( $_GET['start_date'] ),
+					'person_end_mandate'	=>	trim( $_GET['end_date'] ),
+					'person_role'			=>	trim( $_GET['person_role'] )
 			);
 			
 			//print_r($presidentData);

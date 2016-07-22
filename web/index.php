@@ -65,6 +65,18 @@ if ( $controller != '' )
 	{
 		include __DIR__ . '\..\Controller\EditPresidentController.php';
 		
+		$editPresidents = new EditPresidentController();
+		
+		if ( ! empty( $_GET ) )
+		{
+			$editPresidents->presidentEdit();
+		}
+		
+		$editPresidents->renderForm();
+		//$editPresidents->getPresidentData();
+		//var_dump($editPresidents);
+		//$editPresidents->renderForm();
+		
 		
 		
 	}
