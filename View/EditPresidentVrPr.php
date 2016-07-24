@@ -32,7 +32,11 @@
 		<h3>Editing President</h3>
 		
 			<form action="?controller=EditPresidents" method="POST" >
+<<<<<<< HEAD
 				<input type="hidden" name="id" value="<?php echo $this->presidentData['peo_id'];?>" />
+=======
+			
+>>>>>>> origin/master
 				<div id="form_container"> 
 					
 					<div class="forename">
