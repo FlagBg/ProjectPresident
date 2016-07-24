@@ -23,7 +23,10 @@ if ( $controller != '' )
 		
 		$createPresident = new PresidentCreate;
 		
+		$createPresident->createPresident();
 		echo $createPresident->createPresident();
+		
+		
 		
 	}
 	
@@ -58,7 +61,22 @@ if ( $controller != '' )
 		$listPresidents = new PresidentsVicePresidentsList;
 		
 		$listPresidents->allPresidentsAndVicePresidentsList();
-		//var_dump($listPresidents);die('here');
+		
+	}
+	
+	elseif ( $controller=='EditPresidents')
+	{
+		include __DIR__ . '\..\Controller\EditPresidentController.php';
+		
+		$editPresidents = new EditPresidentController();
+		
+		if ( ! empty( $_POST ) )
+		{
+			$editPresidents->presidentEdit();
+			//var_dump($editPresidents);
+		}
+	
+		$editPresidents->renderForm();
 	}
 	
 	elseif ( $controller =='ShowJoin' )//ShowAllPresidents with join unorder!
@@ -90,13 +108,23 @@ if ( $controller != '' )
 	}
 }
 
-
-
 else 
 {
 		$form = file_get_contents( __DIR__ . '/../View/CreateUser.html');
 			
 		print ( $form );
 }
+
+/* require '../vendor/autoload.php';
+
+use Philo\Blade\Blade;
+
+$views = __DIR__ . '/views';
+$cache = __DIR__ . '/cache';
+
+$blade = new Blade( $views, $cache );
+echo $blade->view()->make('hello')->render();
+die('index'); */
+
 
 ?>

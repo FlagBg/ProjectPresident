@@ -33,20 +33,15 @@ class PresidentModel
 	 */
 	public function createPresident( $presidentData )
 	{
-		//print_r($presidentData);
-		//echo "<br /><br />";
 		$sql0 = 'SELECT * FROM tbl_role WHERE rol_name=? LIMIT 1';
 		
 		$roleArray = array( $presidentData['person_role'] );
-		//print_r( $returnedArray );//echo "<br /><br/>";
-		
+		//print_r( $returnedArray );echo "<br /><br/>";
 		try 
 		{
 			$stmt = $this->db->prepare( $sql0 );
 			$result = $stmt->execute( $roleArray );
-			
 			// find the rol_id returned by the query. and use it in the sql query to insert into the tbl_people table.
-			
 			$returnedArray = $stmt->fetchAll(PDO::FETCH_BOTH);
 			
 			$roleid = $returnedArray[0]['rol_id'];
@@ -85,6 +80,50 @@ class PresidentModel
 		{
 			return false;
 		} 
+	}
+
+	
+	public function presidentEdit( $peo_id, $presidentData )
+	{
+		$sql = 'UPDATE tbl_people SET peo_forename =?, peo_surname = ? 
+				WHERE peo_id = ' . $peo_id;
+		
+		$stmt = $this->db->prepare( $sql );
+		
+		$result = $stmt->execute( $presidentData );
+		
+		return $result;
+
+		
+	}
+	
+	public function getPresidentData( $peo_id )
+	{	
+		$sql	= 'SELECT tbl_people.peo_id,tbl_role.rol_name, tbl_people.peo_forename, tbl_people.peo_surname, tbl_date.dat_start, tbl_date.dat_end
+			FROM tbl_role
+			INNER JOIN tbl_people on tbl_role.rol_id=tbl_people.peo_rol_id
+			INNER JOIN tbl_date on tbl_people.peo_id=tbl_date.dat_peo_id
+			 WHERE peo_id = ?';
+		
+		$stmt = $this->db->prepare( $sql );
+		
+		$result	= $stmt->execute( array( $peo_id ) );
+		
+		$presidentData	= array();
+		
+		if ( $result )
+		{
+			$presidentData = $stmt->fetch( PDO::FETCH_ASSOC );
+			
+			//var_dump($presidentData);//it is shows all the datas in an array;
+			
+			return $presidentData;
+		}
+		else 
+		{
+			echo 'an error has occured';
+		}
+			
 	}
 
 	/**
@@ -135,7 +174,7 @@ class PresidentModel
 			
 			$result = $stmt->execute();
 			
-			$allVicePresidentsArray = $stmt->fetchAll(PDO::FETCH_BOTH);
+			$allVicePresidentsArray = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			
 			return $allVicePresidentsArray;
 			
@@ -151,13 +190,13 @@ class PresidentModel
 	/**
 	 * @brief	ShowPresidents with join extract to template;
 	 * 
-	 * @return unknown|string
+	 * @return unknown|string	adding peo_id for the purposes of EIDT
 	 */
 	public function showAllPresidents()
 	{
 		try 
 		{
-			$sql = 'SELECT tbl_role.rol_name, peo_forename, peo_surname,
+			$sql = 'SELECT tbl_role.rol_name, peo_id, peo_forename, peo_surname,
 				tbl_date.dat_start, tbl_date.dat_end
 				FROM tbl_people JOIN tbl_role ON peo_rol_id = rol_id AND rol_name="President"
 				JOIN tbl_date ON dat_peo_id = peo_id';
@@ -166,7 +205,7 @@ class PresidentModel
 			
 			$presidentsList = $stmt->execute();
 			
-			$presidentsArray = $stmt->fetchAll( PDO::FETCH_BOTH );
+			$presidentsArray = $stmt->fetchAll( PDO::FETCH_ASSOC );
 			
 			return $presidentsArray;	
 		}
@@ -179,7 +218,7 @@ class PresidentModel
 	}
 	
 	/**
-	 * @brief	to do... create a query or other way of combining datas and showing them into
+	 * @brief	create a query or other way of combining datas and showing them into
 	 * 			tables!;
 	 */
 	public function allPresidentsAndVicePresidentsList()
@@ -188,9 +227,7 @@ class PresidentModel
 			
 		$presidents		= $this->showAllPresidents();
 		
-		//this is silly, but is it the only way out for now, or could be
-		//sql query that combain join tables plus  WHERE tbl_role, ORDER BY, asc COMPARE
-		return $allPresidents = array( $presidents, $vicePresidents );
+		return $allPresidents = array( 'presidents' => $presidents, 'vice-presidents' => $vicePresidents );
 		
 	}
 	
@@ -222,7 +259,6 @@ class PresidentModel
 	 */
 	public function testTemplate()
 	{
-		
 		$template = file_get_contents( __DIR__ . '/../View/show_top.html' );
 		
 		$dataTemplate = array(
@@ -273,6 +309,13 @@ class PresidentModel
 			//shows all presidents!
 			$sql3 = 'SELECT tbl_role.rol_name, peo_forename, peo_surname, tbl_date.dat_start, tbl_date.dat_end FROM tbl_people JOIN tbl_role ON peo_rol_id = rol_id AND rol_name="President"
 					JOIN tbl_date ON dat_peo_id = peo_id';
+			
+			
+			$sql4 = 'SELECT tbl_people.peo_id,tbl_role.rol_name, tbl_people.peo_forename, tbl_people.peo_surname, tbl_date.dat_start, tbl_date.dat_end
++			FROM tbl_role
++			INNER JOIN tbl_people on tbl_role.rol_id=tbl_people.peo_rol_id
++			INNER JOIN tbl_date on tbl_people.peo_id=tbl_date.dat_peo_id
++			 WHERE peo_id = 33';
 	
 		}
 		catch ( Exception $e)
