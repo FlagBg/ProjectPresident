@@ -1,7 +1,6 @@
 <?php 
 
 ?>
-
 <!DOCTYPE html>
 
 <html>
@@ -11,6 +10,22 @@
 		
 		<title>Edit Presidents Template</title>
 		
+		<style type="text/css">
+					.redirectButton
+					{
+						background:grey;
+						width:100px;
+						height:30px;
+						text-align:center;
+						padding-top:5px;
+					}
+					
+					.redirectButton a
+					{
+						color:blue;
+						text-decoration:none;
+					}
+		</style>
 	</head>
 	
 	<body>
@@ -32,6 +47,7 @@
 		<h3>Editing President</h3>
 		
 			<form action="?controller=EditPresidents" method="POST" >
+				<input type="hidden" name="id" value="<?php echo $this->presidentData['peo_id'];?>" />
 			
 				<div id="form_container"> 
 					
@@ -82,9 +98,22 @@
 							</div>
 						</div>
 					</div>
-					<div id="submit_container">
+					<div class="submit_container">
 						<input type="submit" name="submit" value="Edit" onClick="return validate(); return false;" />
+					</div>	
+					<div>
+						<a href="index.php?controller=Presidents">
+						<input type="button" id="redirection" value="Presidents" />
+						</a> 
+						<a href="index.php?controller=VicePresidents">
+						<input type="button" id="redirection" value="VicePresidents" /></a>
+					</div>	
+					<div class="redirectButton">
+						<a href="index.php?controller=PresidentsVicePresidents">All Presidents</a>
 					</div>
+					
+						
+					
 					
 				</div> <!-- form container div --> 
 				

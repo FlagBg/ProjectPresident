@@ -18,164 +18,208 @@
 		<div id="header">
 			<div class="container">
 				<div class="container"> 				
-				<a id=" " href="index.php?controller=Presidents">Presidents</a>
-				<a id=" " href="index.php?controller=VicePresidents">Vice-Presidents</a>
-			</div>
+					<a id=" " href="index.php?controller=Presidents">Presidents</a>
+					<a id=" " href="index.php?controller=VicePresidents">Vice-Presidents</a>
+				</div>
 			</div>
 		</div>
-		
 	</header>
 	
 	<section class="section-table">
-		<div class="container">
-			<div id="pres-vp-header" class="row interior-header">
-				<div class="col-xs-12">
-					<h1>Presidents &amp; Vice Presidents</h1>
-				</div>
-			</div>
-
-			<div class="row padded-both"></div>
-		
-		<div class="row padded-bottom">
+	<div class="container">
+		<div id="pres-vp-header" class="row interior-header">
 			<div class="col-xs-12">
-				<table class="table">
-					<tr>
-						<td>
-							
-						<td>
-					</tr>
-				
-					<tr>
-						<th>President</th>
-						<th>Vice President</th>
-					</tr>
-					<tr>
-						<td>
-							<?php 
-							
-							for( $i=0; $i<count($dataArray['presidents'][$i]); $i++ )
-							{
-								echo $dataArray['presidents'][$i]['peo_forename'] . " " .
-								$dataArray['presidents'][$i]['peo_surname'] . " " .
-								$dataArray['presidents'][$i]['dat_start'] . " " .
-								$dataArray['presidents'][$i]['dat_end'] . "<br>";
-							}
-// 							foreach ( $dataArray['presidents'] as $key => $value) 
-// 							{
-// 								foreach ( $value as $key2 => $value2 )
-// 								{
-// 									echo $value2 . "<br>";
-// 								}
-// 							}
-							 ?>
-						</td>
-						
-						<td>
-						<?php
-						//var_dump($dataArray['vice-presidents'] );
-						foreach ( $dataArray['vice-presidents'] as $key => $row) 
-							{
-								foreach ( $row as $key2 => $val )
-								{
-									echo $val ." ";
-								}
-								echo "<br>";
-							}
-							
-						/* for( $k=0; $k<count( $dataArray['vice-presidents'][$k] ); $k++ )
-							{
-								echo $dataArray['vice-presidents'][$k]['peo_forename'] . " " .
-								$dataArray['vice-presidents'][$k]['peo_surname'] . " " .
-								$dataArray['vice-presidents'][$k]['dat_start'] . " " .
-								$dataArray['vice-presidents'][$k]['dat_end'] . "<br>";
-							}	 */
-							?>
-						</td>
-						
-					</tr>
-				</table>	
-				
-				<p>Another Table</p>
-				
-				<table class="table One" border="1">
-					<tr>
-						<th>President</th>
-						<th>Vice President</th>
-					</tr>
-					<tr>
-						<td>
-							<?php 
-							for( $i=0; $i<count($dataArray['presidents'][$i]); $i++ )
-							{
-								echo $dataArray['presidents'][$i]['peo_forename'] . " " .
-								$dataArray['presidents'][$i]['peo_surname'] . " " .
-								$dataArray['presidents'][$i]['dat_start'] . " " .
-								$dataArray['presidents'][$i]['dat_end'] . "<br>";
-							}
-// 							foreach ( $dataArray['presidents'] as $key => $value) 
-// 							{
-// 								foreach ( $value as $key2 => $value2 )
-// 								{
-// 									echo $value2 . "<br>";
-// 								}
-// 							}
-							 ?>
-						</td>
-						
-						<td>
-						<?php
-						foreach ( $dataArray['vice-presidents'] as $key => $row) 
-							{
-								foreach ( $row as $key2 => $val )
-								{
-									echo $val ." ";
-								}
-								echo "<br>";
-							}
-							
-						/* for( $k=0; $k<count( $dataArray['vice-presidents'][$k] ); $k++ )
-							{
-								echo $dataArray['vice-presidents'][$k]['peo_forename'] . " " .
-								$dataArray['vice-presidents'][$k]['peo_surname'] . " " .
-								$dataArray['vice-presidents'][$k]['dat_start'] . " " .
-								$dataArray['vice-presidents'][$k]['dat_end'] . "<br>";
-							}	 */
-							?>
-						</td>
-						
-					</tr>
-				</table>	
-				
-				<p> Paragraph </p>
-				
-				<table class="tableThree" border="1">	
-					<tr>
-						<td>2. <a href="#">John Adams (1797-1801)</a></td>
-						<td><a href="#">Thomas Jefferson (1797-1801)</a></td>
-					</tr>
-					<tr>
-						<td>3. <a href="jefferson.html">Thomas Jefferson (1801-1809)</a></td>
-						<td><a href="jefferson.html">Aaron Burr (1801-1805)</a><br />
-						<a href="jefferson.html">George Clinton (1805-1809)</a></td>
-					</tr>
-					<tr>
-						<td>4. <a href="madison.html">James Madison (1809-1817)</a></td>
-						<td>
-							<a href="madison.html">George Clinton (1809-1812)</a><br />
-							<a href="novicepresident.html">None (1812-1813)</a><br />
-							<a href="madison.html">Elbridge Gerry (1813-1814)</a><br />
-							<a href="novicepresident.html">None (1814-1817)</a>
-						</td>
-					</tr>
-				</table>
-				
+				<h1>Presidents &amp; Vice Presidents</h1>
 			</div>
-		</div>
+		</div>		
+		<div class="four-padded-bottom">
+			<div class="col-xs-12">
+			<div class = "table One">
+				<table border="1" class="table-first">
+					<tr>
+						<th>Presidents</th>
+						<th>Vice President</th>
+					</tr>
+				<tr>
+					<td>
+					<?php 
+					for( $i=0; $i<count( $dataArray['presidents'][$i]); $i++ )
+					{
+					echo $dataArray['presidents'][$i]['peo_forename'] . " " .
+						$dataArray['presidents'][$i]['peo_surname'] . " " .
+						$dataArray['presidents'][$i]['dat_start'] . " " .
+						$dataArray['presidents'][$i]['dat_end'] . "<br>";
+					}
+					/* foreach ( $dataArray['presidents'] as $key => $value) 
+						{
+							foreach ( $value as $key2 => $value2 )
+							{
+								echo $value2 . "<br>";
+							}
+						} */
+					?>
+					</td>	
+					<td>
+					<?php
+					foreach ( $dataArray['vice-presidents'] as $key => $row) 
+					{
+					foreach ( $row as $key2 => $val )
+					{
+						echo $val ." ";
+					}
+					echo "<br>";
+					}					
+					/* for( $k=0; $k<count( $dataArray['vice-presidents'][$k] ); $k++ )
+						{
+							echo $dataArray['vice-presidents'][$k]['peo_forename'] . " " .
+							$dataArray['vice-presidents'][$k]['peo_surname'] . " " .
+							$dataArray['vice-presidents'][$k]['dat_start'] . " " .
+							$dataArray['vice-presidents'][$k]['dat_end'] . "<br>";
+						}	 */
+					?>
+					</td>
+				</tr>
+				</table>	
+			</div>
+			
+			
+		<h2>This one is row by row table</h2>	
+		<table class = "row by row table" border="1">
+			<tr>
+				<th>Title</th>
+				<th>Firstname</th>
+				<th>Surname</th>
+				<th>Mandate starts</th>
+				<th>Mandate ends</th>
+				<th>Actions</th>
+			</tr>
+			<?php
+			for ( $i = 0; $i<count( $dataArray['presidents'] ); $i++ )
+				{
+			?>
+			<tr>
+				<td><?php echo $dataArray['presidents'][$i]['rol_name'];?></td>
+				<td><?php echo $dataArray['presidents'][$i]['peo_forename'];?></td>
+				<td><?php echo $dataArray['presidents'][$i]['peo_surname'];?></td>
+				<td><?php echo $dataArray['presidents'][$i]['dat_start'];?></td>
+				<td><?php echo $dataArray['presidents'][$i]['dat_end']; ?></td>
+				<td>
+			<!--  <a href = "index.php?id=<?php echo $dataArray['presidents'][$i]['peo_id']; ?>" >Edit</a> --> 
+			<a href = " " class="editPresidents" value="<?= $dataArray['presidents'][$i]['peo_id']; ?>" >Edit</a>
+				</td>
+			</tr>
+			<?php 
+				}
+			?>
+		</table>	
+		
+		
+		<h2>This one is row by row table Two</h2>	
+		<table class = "row_by_row_table_vice_presidents" border="1">
+			<tr>
+				<th>Title</th>
+				<th>Firstname</th>
+				<th>Surname</th>
+				<th>Mandate starts</th>
+				<th>Mandate ends</th>
+				<th>Actions</th>
+			</tr>
+			<?php
+			for ( $k = 0; $k<count( $dataArray['vice-presidents'] ); $k++ )
+				{
+			?>
+			<tr>
+				<td><?php echo $dataArray['vice-presidents'][$k]['rol_name'];?></td>
+				<td><?php echo $dataArray['vice-presidents'][$k]['peo_forename'];?></td>
+				<td><?php echo $dataArray['vice-presidents'][$k]['peo_surname'];?></td>
+				<td><?php echo $dataArray['vice-presidents'][$k]['dat_start'];?></td>
+				<td><?php echo $dataArray['vice-presidents'][$k]['dat_end']; ?></td>
+				<td>
+			<!--  <a href = "index.php?id=<?php echo $dataArray['vice-presidents'][$k]['peo_id']; ?>" >Edit</a> --> 
+			<a href = " " class="editPresidents" value="<?= $dataArray['presidents'][$k]['peo_id']; ?>" >Edit</a>
+				</td>
+			</tr>
+			<?php 
+				}
+			?>
+		</table>	
+			
+			
+			
+			
+			
+			
+		<p>Another Table</p>
+		<div class ="Another table">	
+			<table class="table One" border="1">
+			<tr>
+				<th>Title</th>
+				<th>Firstname</th>
+				<th>Surname</th>
+				<th>Mandate starts</th>
+				<th>Mandate ends</th>
+				<th>Actions</th>
+				<th>Title</th>
+				<th>Firstname</th>
+				<th>Surname</th>
+				<th>Mandate starts</th>
+				<th>Mandate ends</th>
+				<th>Actions</th>
+			</tr>
+				<?php 
+						
+				for ( $k = 0; $k<count( $dataArray['vice-presidents'] ); $k++ )
+					{
+						
+				for ( $i = 0; $i<count( $dataArray['presidents'] ); $i++ )
+				{
+					?>
+				<tr>
+					<td><?php echo $dataArray['presidents'][$i]['rol_name'];?></td>
+					<td><?php echo $dataArray['presidents'][$i]['peo_forename'];?></td>
+					<td><?php echo $dataArray['presidents'][$i]['peo_surname'];?></td>
+					<td><?php echo $dataArray['presidents'][$i]['dat_start'];?></td>
+					<td><?php echo $dataArray['presidents'][$i]['dat_end']; ?></td>
+					<td>
+					<!--  <a href = "index.php?id=<?php echo $dataArray['presidents'][$i]['peo_id']; ?>" >Edit</a> --> 
+					<a href = " " class="editPresidents" value="<?= $dataArray['presidents'][$i]['peo_id']; ?>" >Edit</a>
+					</td>
+				<?php 
+					}
+					?>
+					<td><?php echo $dataArray['vice-presidents'][$k]['rol_name'];?></td>
+					<td><?php echo $dataArray['vice-presidents'][$k]['peo_forename'];?></td>
+					<td><?php echo $dataArray['vice-presidents'][$k]['peo_surname'];?></td>
+					<td><?php echo $dataArray['vice-presidents'][$k]['dat_start'];?></td>
+					<td><?php echo $dataArray['vice-presidents'][$k]['dat_end']; ?></td>
+					<td>
+					<!--  <a href = "index.php?id=<?php echo $dataArray['vice-presidents'][$k]['peo_id']; ?>" >Edit</a> -->
+						<a href = " " class="editVicePresidents" value="<?= $dataArray['vice-presidents'][$k]['peo_id']; ?>" >Edit</a>	
+					</td>
+				
+				<?php 
+					}
+					/* foreach ( $dataArray['presidents'] as $key => $value)
+					 {
+					 foreach ( $value as $key2 => $value2 )
+					 {
+					 echo $value2 . "<br>";
+					 }
+					 } */	
+					
+				?>
+					
+				</tr>
+		</table>
+	</div>		
+	
+	</div>
+	</div>
 	</div>
 	</section>
 	
 	<section>
-	 <nav>
+	<nav class="nav">
 		<div class="row">
 			<ul class="main-nav js--main-nav">
 				<li><a href="index.php">Add President</a></li>
@@ -185,31 +229,10 @@
 			</ul>
 			<a class="mobile-nav-icon js--nav-icon"><i class="ion-navicon-round"></i></a>
 		</div>
-		</nav>
-		<div class="hero-text-box">
-			<h1>Think.<br>Just Think.</h1>
-			<a class="btn btn-full js--scroll-to-plans" href="#">I'm Slow</a>
-			<a class="btn btn-ghost js--scroll-to-start" href="#">Show me more</a>
-		</div>
-	
-	
-	
-	
+	</nav>
 	</section>
 	
-	<footer>
-		<div class="row">
-			<div class="col span-1-of-2">
-				<ul class="footer-nav">
-					<li><a href="#">About us</a></li>
-					<li><a href="#">Blog</a></li>
-					<li><a href="#">Press</a></li>
-					<li><a href="#">iOS App</a></li>
-					<li><a href="#">Android App</a></li>
-				</ul>
-			</div>
-				
-		</div>
+	<footer class="footer">
 		<div class="row">
 			<p>
 				This webpage Is Just Learning No copyrights here.<br>
@@ -224,7 +247,3 @@
 	
 	</body>
 </html>
-	
-	
-	
-	

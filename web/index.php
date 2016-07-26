@@ -24,10 +24,7 @@ if ( $controller != '' )
 		$createPresident = new PresidentCreate;
 		
 		$createPresident->createPresident();
-		echo $createPresident->createPresident();
-		
-		
-		
+		//echo $createPresident->createPresident();		
 	}
 	
 	elseif ( $controller == 'VicePresidents')//it has template!
@@ -70,17 +67,21 @@ if ( $controller != '' )
 		
 		$editPresidents = new EditPresidentController();
 		
-		if ( ! empty( $_GET ) )
+		if ( ! empty( $_POST ) )
 		{
 			$editPresidents->presidentEdit();
+			//var_dump( $editPresidents );
 		}
 		
 		$editPresidents->renderForm();
 		//$editPresidents->getPresidentData();
 		//var_dump($editPresidents);
 		//$editPresidents->renderForm();
-		
-		
+	}
+	
+	elseif ( $controller=='EditVicePresidents')
+	{	//to do, trying to avoid.... doing it shorter....
+		include __DIR__ . '\..\Controller\EditVicePresidentController';
 		
 	}
 	

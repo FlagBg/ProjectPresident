@@ -24,7 +24,7 @@
 	<section class="section-table">
 	<div class="container">
 		<div>
-		<h3>Table that We work for Edit</h3>	
+		<h3>President's list</h3>	
 			<table class="New Table" border="1" class="table2">
 			<tr>
 				<th>Title</th>
@@ -35,7 +35,7 @@
 				<th>Actions</th>
 			</tr>
 				<?php 
-				for ( $i = 0; $i<count($presidents); $i++ )
+				for ( $i = 0; $i<count( $presidents); $i++ )
 				{
 					?>
 				<tr>
@@ -46,7 +46,7 @@
 					<td><?php echo $presidents[$i]['dat_end']; ?></td>
 					<td>
 					<!--	<a href = "index.php?id=<?php //echo $presidents[$i]['peo_id']; ?>" >Edit</a> -->
-						<a href = " " class="edit" value="<?= $presidents[$i]['peo_id']; ?>" >Edit</a>	
+						<a href = " " class="edit" value="<?php echo $presidents[$i]['peo_id']; ?>" >Edit</a>	
 					</td>
 				</tr>
 				<?php

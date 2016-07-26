@@ -32,8 +32,22 @@ class PresidentCreate
 					'person_role'			=>	trim( $_POST['person_role'] )
 			);
 			
-			var_dump($presidentData);
+			echo "give me the post['Datas']" . var_dump( $presidentData );
 
+			if ( $_POST['person_role'] === "President")
+			{
+				$templateForm = include __DIR__ . '/../View/PresidentsTemplate.php';
+				
+				print $templateForm;
+			}
+			elseif ( $_POST['person_role'] === "Vice-President" )
+			{
+				$templateForm = include __DIR__ . '/../View/VicePresidentsTemplate.php';
+				
+				print $templateForm;	
+			}
+			
+			
 		}
 		
 		$presidentModel = new PresidentModel();
@@ -55,10 +69,10 @@ class PresidentCreate
 
 	}
 
-	public function render()
-	{
+	/* public function render()
+	{die('asdf');
 		print ( $templateForm );
 	} 
-
+ */
 
 }
