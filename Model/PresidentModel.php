@@ -85,35 +85,21 @@ class PresidentModel
 	
 	public function presidentEdit( $peo_id, $presidentData )
 	{
-<<<<<<< HEAD
+		$_get['id'] = (int) $peo_id;
+	
 		$sql = 'UPDATE tbl_people SET peo_forename =?, peo_surname = ? 
 				WHERE peo_id = ' . $peo_id;
-=======
-		$_get['id'] = (int) $peo_id;
-		var_dump( $_GET['id'] );
-		$sql = 'UPDATE tbl_people SET peo_forname =?,
-									peo_surname = ? 
-				WHERE peo_id = ' . $peo_id;
-				
->>>>>>> origin/master
 		
 		$stmt = $this->db->prepare( $sql );
 		
 		$result = $stmt->execute( $presidentData );
 		
 		return $result;
-
 		
 	}
 	
 	public function getPresidentData( $peo_id )
-<<<<<<< HEAD
-	{	
-=======
-	{
-		//$_GET['id'] = (int) $peo_id;
-		
->>>>>>> origin/master
+	{	//$_GET['id'] = (int) $peo_id;
 		$sql	= 'SELECT tbl_people.peo_id,tbl_role.rol_name, tbl_people.peo_forename, tbl_people.peo_surname, tbl_date.dat_start, tbl_date.dat_end
 			FROM tbl_role
 			INNER JOIN tbl_people on tbl_role.rol_id=tbl_people.peo_rol_id
@@ -129,13 +115,8 @@ class PresidentModel
 		if ( $result )
 		{
 			$presidentData = $stmt->fetch( PDO::FETCH_ASSOC );
-			
-<<<<<<< HEAD
 			//var_dump($presidentData);//it is shows all the datas in an array;
-=======
-			var_dump($presidentData);
->>>>>>> origin/master
-			
+
 			return $presidentData;
 		}
 		else 
@@ -231,6 +212,7 @@ class PresidentModel
 		catch ( Exception $e )
 		{
 			return "Failed to show list of all Presidents";
+			
 			echo $e;
 		}
 		
