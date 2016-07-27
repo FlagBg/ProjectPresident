@@ -34,7 +34,7 @@ class PresidentCreate
 			
 			echo "give me the post['Datas']" . var_dump( $presidentData );
 
-			if ( $_POST['person_role'] === "President")
+			/* if ( $_POST['person_role'] === "President")
 			{
 				$templateForm = include __DIR__ . '/../View/PresidentsTemplate.php';
 				
@@ -45,7 +45,7 @@ class PresidentCreate
 				$templateForm = include __DIR__ . '/../View/VicePresidentsTemplate.php';
 				
 				print $templateForm;	
-			}
+			} */
 			
 			
 		}
