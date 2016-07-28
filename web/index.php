@@ -70,7 +70,7 @@ if ( $controller != '' )
 		
 		$editPresidents = new EditPresidentController();
 		
-<<<<<<< HEAD
+
 		if ( ! empty( $_POST ) )
 		{
 			$editPresidents->presidentEdit();
@@ -78,20 +78,6 @@ if ( $controller != '' )
 		}
 	
 		$editPresidents->renderForm();
-=======
-		if ( ! empty( $_GET ) )
-		{
-			$editPresidents->presidentEdit();
-		}
-		
-		$editPresidents->renderForm();
-		//$editPresidents->getPresidentData();
-		//var_dump($editPresidents);
-		//$editPresidents->renderForm();
-		
-		
-		
->>>>>>> origin/master
 	}
 	
 	elseif ( $controller =='ShowJoin' )//ShowAllPresidents with join unorder!
