@@ -69,9 +69,9 @@ class PresidentModel
 					$lastInsertId
 			);
 			
-			$stmt = $this->db->prepare($sql1);
+			$stmt = $this->db->prepare( $sql1 );
 			
-			$result = $stmt->execute($dateArray);
+			$result = $stmt->execute( $dateArray );
 			
 			return true;
 		}
@@ -82,12 +82,18 @@ class PresidentModel
 		} 
 	}
 
-	
+	/**
+	 * @brief	function that edit 
+	 * @param int 	$peo_id
+	 * @param array $presidentData
+	 */
 	public function presidentEdit( $peo_id, $presidentData )
 	{
 		$_get['id'] = (int) $peo_id;
-	
-		$sql = 'UPDATE tbl_people SET peo_forename =?, peo_surname = ? 
+
+		
+		$sql = 'UPDATE tbl_people SET peo_forename =?,
+									peo_surname = ? 
 				WHERE peo_id = ' . $peo_id;
 		
 		$stmt = $this->db->prepare( $sql );
@@ -99,7 +105,7 @@ class PresidentModel
 	}
 	
 	public function getPresidentData( $peo_id )
-	{	//$_GET['id'] = (int) $peo_id;
+	{		//$_GET['id'] = (int) $peo_id;	
 		$sql	= 'SELECT tbl_people.peo_id,tbl_role.rol_name, tbl_people.peo_forename, tbl_people.peo_surname, tbl_date.dat_start, tbl_date.dat_end
 			FROM tbl_role
 			INNER JOIN tbl_people on tbl_role.rol_id=tbl_people.peo_rol_id
@@ -115,8 +121,7 @@ class PresidentModel
 		if ( $result )
 		{
 			$presidentData = $stmt->fetch( PDO::FETCH_ASSOC );
-			//var_dump($presidentData);//it is shows all the datas in an array;
-
+			//var_dump($presidentData); //printing the array with all datas
 			return $presidentData;
 		}
 		else 
@@ -165,7 +170,7 @@ class PresidentModel
 	{ 
 		try
 		{
-			$sql = 'SELECT tbl_role.rol_name, peo_forename, peo_surname, 
+			$sql = 'SELECT tbl_role.rol_name, peo_id, peo_forename, peo_surname, 
 				tbl_date.dat_start, tbl_date.dat_end 
 				FROM tbl_people JOIN tbl_role ON peo_rol_id = rol_id AND rol_name="Vice-President"
 				JOIN tbl_date ON dat_peo_id = peo_id';

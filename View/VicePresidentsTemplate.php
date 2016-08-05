@@ -10,6 +10,7 @@
 		
 		<title>US Vice Presidents list</title>
 	</head>
+	
 	<body id="vice-president-list-page">
 
 	<header>
@@ -17,40 +18,59 @@
 		<div id="header">
 			<div class="container">
 				<div class="container"> 				
-				<a id=" " href="index.php?controller=Presidents">Presidents</a>
-				<a id=" " href="index.php?controller=VicePresidents">Vice-Presidents</a>
-			</div>
+					<a id=" " href="index.php?controller=Presidents">Presidents</a>
+					<a id=" " href="index.php?controller=VicePresidents">Vice-Presidents</a>
+				</div>
 			</div>
 		</div>
 	</header>
 	
-	<section class="section-table">
+	<section class="section-table-vice-presidents">
 	<div class="container">	
-		<div class="row padded-bottom">
-			<div class="col-xs-12">
-				<table class="table" border="1">
-					<tr>
-						<th>Vice Presidents List</th>
-					</tr>
+		<div class="col-xs-12">
+			<h3>Vice-President's List</h3>
+			<table class="table" border="1">
+				<tr>
+					<th>Title</th>
+					<th>Firstname</th>
+					<th>Surname</th>
+					<th>Mandate starts</th>
+					<th>Mandate ends</th>
+					<th>Actions</th>
+				</tr>
 					<?php
-						for( $i = 0; $i < count( $vicePresidents ); $i++ )
-						{
-					?>
+						for( $i = 0; $i < count( $vicePresidents ); $i++ ):
+						//var_dump($vicePresidents[$i]['peo_id']) . print ("The peo_id:");
+					?>	
 					<tr>
-						<td><?php echo $vicePresidents[$i]['peo_forename'] . " ", 
-										$vicePresidents[$i]['peo_surname'] . ":", 
-										" Mandate Starts " . $vicePresidents[$i]['dat_start'] . " ",
-										"mandate end " . $vicePresidents[$i]['dat_end'] . " "
-						?>
+						<td><?php echo $vicePresidents[$i]['rol_name']; ?></td>
+						<td><?php echo $vicePresidents[$i]['peo_forename']; ?></td>
+						<td><?php echo $vicePresidents[$i]['peo_surname']; ?></td>
+						<td><?php echo $vicePresidents[$i]['dat_start']; ?></td>
+						<td><?php echo $vicePresidents[$i]['dat_end']; ?></td>
+						<td>
+							<a href = " " class="editV" value="<?php echo $vicePresidents[$i]['peo_id']; ?>" >Edit</a>
 						</td>
 					</tr>
-					<?php
-						}
+					<?php 
+						endfor;
 					?>
-				</table>
-			</div>
+			</table>
 		</div>
 	</div>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+							<script type="text/javascript">
+								$(document).ready(function()
+										{
+											$('.editV').click(function(event){
+													event.preventDefault();
+													var value = $(this).attr('value');
+													location.href="index.php?controller=EditPresidents&id="+value
+												});
+										});
+							</script>
+			
 	</section>
 	
 	<section>
@@ -64,25 +84,12 @@
 			</ul>
 			<a class="mobile-nav-icon js--nav-icon"><i class="ion-navicon-round"></i></a>
 		</div>
-		</nav>
-		<div class="hero-text-box">
-			<h1>Think.<br>Just Think.</h1>
-			<a class="btn btn-full js--scroll-to-plans" href="#">I'm Slow</a>
-			<a class="btn btn-ghost js--scroll-to-start" href="#">Show me more</a>
-		</div>
+	</nav>
 	
 	</section>
 	<footer>
 		<div class="row">
-			<div class="col span-1-of-2">
-				<ul class="footer-nav">
-					<li><a href="#">About us</a></li>
-					<li><a href="#">Blog</a></li>
-					<li><a href="#">Press</a></li>
-					<li><a href="#">iOS App</a></li>
-					<li><a href="#">Android App</a></li>
-				</ul>
-			</div>
+			
 		</div>
 		<div class="row">
 			<p>
@@ -92,6 +99,10 @@
 			<p>
 				Build with <i class="ion-ios-heart" style="color: #ea0000; padding: 0 3px;"></i> in the beautiful city of Plovdiv, July 2016.
 			</p>
+				<!-- echo $vicePresidents[$i]['peo_forename'] . " ", 
+										$vicePresidents[$i]['peo_surname'] . ":", 
+										" Mandate Starts " . $vicePresidents[$i]['dat_start'] . " ",
+										"mandate end " . $vicePresidents[$i]['dat_end'] . " " -->
 		</div>
 	</footer>
 </body>
