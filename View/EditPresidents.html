@@ -5,23 +5,11 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		
-		<title>Add President</title>
+		<title>President's edit form</title>
 		
 	</head>
 	
 	<body>
-	
-	<header>
-		<div id="top-header"></div>
-		<div id="header">
-			<div class="container">
-				<div class="container"> 				
-					<a id=" " href="index.php?controller=Presidents">Presidents</a>
-					<a id=" " href="index.php?controller=VicePresidents">Vice-Presidents</a>
-				</div>
-			</div>
-		</div>
-	</header>
 	
 	<script type="text/javascript">
 		function validate(){
@@ -36,18 +24,29 @@
 		}
 	</script>
 	
-	<section class = "Adding Presidents">
-		<h3>Adding President</h3>
+		<h3>Edit Data for the President</h3>
 		
-			<form action="?controller=CreateNew" method="POST" >
+			<form action="?controller=#" method="POST" >
 			
 				<div id="form_container"> 
-				<div class = "forename">
+				
+					<div class="PresidentNumber" id="president_number_container">
+					<div id="presidentNumber_label_container">
+					<div>
+						<label for="PresidentNumber" >President's order number</label>
+					</div>
+							<select name="PresidentNumber" id="PresidentNumber">
+								<option value="First" selected>First</option>
+								<option value="Second">Second</option>
+								<option value="Third">Third</option>
+						</select>
+					</div>
+					</div>
+					
 					<div id="forename_container">
 						<div id="forename_label_container"><label for="person_first_name" id="person_first_name_label">Person's First Name:</label></div>
 						<div id="forename_input_container"><input type="text" name="person_first_name" id="person_first_name" /></div>
 					</div>
-				</div>
 					
 					<div id="lastname_container">
 						<div id="lastname_label_container"><label for="person_last_name" id="person_last_name_label">Person's Surname</label></div>
@@ -81,26 +80,15 @@
 					</div>
 					
 					<div id="submit_container">
-						<input type="submit" name="submit" value="Register" onClick="return validate(); return false;" />
+						<p>
+							<input type="submit" name="submit" value="Register" onClick="return validate(); return false;" />
+						</p>
 					</div>
 					
 				</div> <!-- form container div --> 
 				
 			</form> <!-- close the form -->
-		</section>
-		
-		<P></P>
-	<footer>
-		<div id="top-header"></div>
-		<div id="header">
-			<div class="container">
-				<div class="container"> 				
-					<a id=" " href="index.php?controller=Presidents">Presidents</a>
-					<a id=" " href="index.php?controller=VicePresidents">Vice-Presidents</a>
-				</div>
-			</div>
-		</div>
-	</footer>
+	
 	</body>
 	
 </html>
