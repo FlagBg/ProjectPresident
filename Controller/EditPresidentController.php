@@ -27,8 +27,8 @@ class EditPresidentController
 				//$_POST['rol_name'], 
 				$_POST['person_first_name'], 
  				$_POST['person_last_name'],
-// 				$_POST['dat_start'],
-// 				$_POST['dat_end'],
+				$_POST['start_date'],
+				$_POST['end_date'],
 // 				$_POST['person_first_name']
 				
 			);
@@ -50,11 +50,11 @@ class EditPresidentController
 	{	
 		//var_dump($this->peo_id);
 		$peo_id	= $_GET['id'];
-
+		echo 'editController line 53 get_id = ' . $peo_id;
 		
 		$this->getPresidentData( $peo_id );
 		
-		$this->peo_id = $_GET['id'];//this one could be out
+		//$this->peo_id = $_GET['id'];//this one could be out
 		//added in additin to render form EditPresidentVrPr
 
 		$form = include __DIR__ . '/../View/EditPresidentVrPr.php';
@@ -64,7 +64,7 @@ class EditPresidentController
 	}
 	
 	public function getPresidentData( $peo_id )
-	{	
+	{	print '<br></br>' . 'editController getPresidentData line 67, peo_id:' . $peo_id;
 		$this->presidentData = $this->presidentEditModel->getPresidentData( $peo_id );
 	}	
 	

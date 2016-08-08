@@ -88,7 +88,7 @@ class PresidentModel
 	 * @param array $presidentData
 	 */
 	public function presidentEdit( $peo_id, $presidentData )
-	{
+	{	print 'model line 91 print peo_id' . $peo_id;
 		$_get['id'] = (int) $peo_id;
 
 		
@@ -96,7 +96,19 @@ class PresidentModel
 									peo_surname = ? 
 				WHERE peo_id = ' . $peo_id;
 		
-		$stmt = $this->db->prepare( $sql );
+		$sqlTest = 'UPDATE tbl_people, tbl_date SET tbl_people.peo_forename = ?,
+		tbl_people.peo_surname = ?,
+		tbl_date.dat_start = ?,
+		tbl_date.dat_end = ?
+		WHERE tbl_people.peo_id = tbl_date.dat_peo_id AND tbl_people.peo_id = ' . $peo_id;
+		
+		/* UPDATE tbl_people, tbl_date SET tbl_people.peo_forename = 'ivanovvvvv',
+		tbl_people.peo_surname = 'ivanovvvv',
+		tbl_date.dat_start = '1789-04-30',
+		tbl_date.dat_end = '1789-05-30'
+				WHERE tbl_people.peo_id = tbl_date.dat_peo_id AND tbl_people.peo_id = '33' */
+		
+		$stmt = $this->db->prepare( $sqlTest );
 		
 		$result = $stmt->execute( $presidentData );
 		
@@ -233,7 +245,10 @@ class PresidentModel
 			
 		$presidents		= $this->showAllPresidents();
 		
-		return $allPresidents = array( 'presidents' => $presidents, 'vice-presidents' => $vicePresidents );
+		return $allPresidents = array( 
+				'presidents' 		=> $presidents, 
+				'vice-presidents'	=> $vicePresidents 
+		);
 		
 	}
 	
