@@ -21,6 +21,13 @@ class EditPresidentController
 		//$this->peo_id = $_GET['id'];
 	}
 	
+	/**
+	 * @brief	edit the profile with that function
+	 * 
+	 * @param	string
+	 * 
+	 * return	void	
+	 */
 	public function presidentEdit()
 	{	//$this->presidentEditModel->editPresident( $this->presidentData );
 		$presidentData = array( 
@@ -29,11 +36,10 @@ class EditPresidentController
  				$_POST['person_last_name'],
 				$_POST['start_date'],
 				$_POST['end_date'],
-// 				$_POST['person_first_name']
+ 				$_POST['person_role']
 				
 			);
 		
-		//var_dump($presidentData);
 		$peo_id = $_POST['id'];
 		//echo 'this is the get peo_id ' . var_dump( $this->peo_id ) . var_dump($peo_id);
 		$result = $this->presidentEditModel->presidentEdit( $peo_id, $presidentData );

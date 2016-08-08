@@ -84,23 +84,33 @@ class PresidentModel
 
 	/**
 	 * @brief	function that edit 
-	 * @param int 	$peo_id
-	 * @param array $presidentData
+	 * 
+	 * @param	int 	$peo_id
+	 * @param	array $presidentData
+	 * 
+	 * @return	void
 	 */
 	public function presidentEdit( $peo_id, $presidentData )
 	{	print 'model line 91 print peo_id' . $peo_id;
 		$_get['id'] = (int) $peo_id;
 
-		
 		$sql = 'UPDATE tbl_people SET peo_forename =?,
 									peo_surname = ? 
 				WHERE peo_id = ' . $peo_id;
 		
-		$sqlTest = 'UPDATE tbl_people, tbl_date SET tbl_people.peo_forename = ?,
-		tbl_people.peo_surname = ?,
-		tbl_date.dat_start = ?,
-		tbl_date.dat_end = ?
-		WHERE tbl_people.peo_id = tbl_date.dat_peo_id AND tbl_people.peo_id = ' . $peo_id;
+		$sqlTest = 'UPDATE tbl_people, tbl_date, tbl_role 
+				SET 
+					tbl_people.peo_forename = ?,
+					tbl_people.peo_surname = ?,
+					tbl_date.dat_start = ?,
+					tbl_date.dat_end = ?
+					tbl_role.role_name = ?
+				WHERE 
+				tbl_people.peo_id = tbl_date.dat_peo_id,
+				tbl_people.peo_rol_id = tbl_role.rol_id
+					AND tbl_people.peo_id = ' . $peo_id;
+		
+//SELECT * FROM tbl_people, tbl_role WHERE tbl_people.peo_rol_id = tbl_role.rol_id AND peo_id = 34		
 		
 		/* UPDATE tbl_people, tbl_date SET tbl_people.peo_forename = 'ivanovvvvv',
 		tbl_people.peo_surname = 'ivanovvvv',
