@@ -94,21 +94,26 @@ class PresidentModel
 	{	print 'model line 91 print peo_id' . $peo_id;
 		$_get['id'] = (int) $peo_id;
 
-		$sql = 'UPDATE tbl_people SET peo_forename =?,
-									peo_surname = ? 
-				WHERE peo_id = ' . $peo_id;
+		$sql = 'UPDATE tbl_people 
+			SET 
+				peo_forename =?,
+				peo_surname = ? 
+			WHERE 
+				peo_id = ' . $peo_id;
 		
 		$sqlTest = 'UPDATE tbl_people, tbl_date, tbl_role 
 				SET 
-					tbl_people.peo_forename = ?,
-					tbl_people.peo_surname = ?,
-					tbl_date.dat_start = ?,
-					tbl_date.dat_end = ?
-					tbl_role.role_name = ?
+					tbl_people.peo_forename	= ?,
+					tbl_people.peo_surname	= ?,
+					tbl_date.dat_start		= ?,
+					tbl_date.dat_end		= ?,
+					tbl_role.rol_name		= ?
 				WHERE 
-				tbl_people.peo_id = tbl_date.dat_peo_id,
-				tbl_people.peo_rol_id = tbl_role.rol_id
-					AND tbl_people.peo_id = ' . $peo_id;
+					tbl_people.peo_id = tbl_date.dat_peo_id
+				AND
+					tbl_people.peo_rol_id = tbl_role.rol_id
+				AND
+					tbl_people.peo_id = ' . $peo_id;
 		
 //SELECT * FROM tbl_people, tbl_role WHERE tbl_people.peo_rol_id = tbl_role.rol_id AND peo_id = 34		
 		
@@ -126,6 +131,12 @@ class PresidentModel
 		
 	}
 	
+	/**
+	 * @brief	get the datas from the db using inner joins
+	 * 
+	 * @param int 		$peo_id
+	 * @return array	$result
+	 */
 	public function getPresidentData( $peo_id )
 	{		//$_GET['id'] = (int) $peo_id;	
 		$sql	= 'SELECT tbl_people.peo_id,tbl_role.rol_name, tbl_people.peo_forename, tbl_people.peo_surname, tbl_date.dat_start, tbl_date.dat_end
